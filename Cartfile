@@ -1,4 +1,4 @@
 #github "LoopKit/LoopKit" == 2.2.1
-github "JoernL/LoopKit" "omnipod-testing"
+github "LoopKit/LoopKit" "omnipod-testing"
 #github "kdisimone/LoopKit" "anna"
 #github "LoopKit/LoopKit" "dev"
