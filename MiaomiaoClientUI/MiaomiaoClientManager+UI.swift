@@ -5,6 +5,8 @@
 //  Copyright © 2018 LoopKit Authors. All rights reserved.
 //
 
+import UIKit
+import LoopKit
 import LoopKitUI
 import HealthKit
 import MiaomiaoClient
