@@ -92,6 +92,10 @@
 		43AB5127213315D300B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB5125213315D300B3D58D /* Localizable.strings */; };
 		43AB51362133177800B3D58D /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB51352133177800B3D58D /* LocalizedString.swift */; };
 		43AB51372133177800B3D58D /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB51352133177800B3D58D /* LocalizedString.swift */; };
+		8000C8FA22707DA8001788EF /* CGMBLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8000C8F922707DA8001788EF /* CGMBLEKit.framework */; };
+		8000C8FC22707DBD001788EF /* CGMBLEKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8000C8FB22707DBD001788EF /* CGMBLEKitUI.framework */; };
+		8000C8FD22707DCE001788EF /* CGMBLEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8000C8F922707DA8001788EF /* CGMBLEKit.framework */; };
+		8000C8FE22707DDA001788EF /* CGMBLEKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8000C8FB22707DBD001788EF /* CGMBLEKitUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +245,8 @@
 		43AB51302133161A00B3D58D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		43AB51352133177800B3D58D /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		43C418AE1CE0488900405B6A /* LibreGlucose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibreGlucose.swift; sourceTree = "<group>"; };
+		8000C8F922707DA8001788EF /* CGMBLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CGMBLEKit.framework; path = Carthage/Build/iOS/CGMBLEKit.framework; sourceTree = "<group>"; };
+		8000C8FB22707DBD001788EF /* CGMBLEKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CGMBLEKitUI.framework; path = Carthage/Build/iOS/CGMBLEKitUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8000C8FE22707DDA001788EF /* CGMBLEKitUI.framework in Frameworks */,
+				8000C8FD22707DCE001788EF /* CGMBLEKit.framework in Frameworks */,
 				43A8EC95210E67B000A81379 /* HealthKit.framework in Frameworks */,
 				272DFE71223E909E00FBE2CB /* LoopKit.framework in Frameworks */,
 				27CFAB53223EA4A7006DEFE3 /* LoopKitUI.framework in Frameworks */,
@@ -282,6 +290,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8000C8FC22707DBD001788EF /* CGMBLEKitUI.framework in Frameworks */,
+				8000C8FA22707DA8001788EF /* CGMBLEKit.framework in Frameworks */,
 				27CFAB52223EA0B2006DEFE3 /* MiaomiaoClient.framework in Frameworks */,
 				272DFE6F223E909600FBE2CB /* LoopKitUI.framework in Frameworks */,
 				272DFE72223E909E00FBE2CB /* LoopKit.framework in Frameworks */,
@@ -400,6 +410,8 @@
 		43A8EC7A210E661300A81379 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8000C8FB22707DBD001788EF /* CGMBLEKitUI.framework */,
+				8000C8F922707DA8001788EF /* CGMBLEKit.framework */,
 				272DFE70223E909E00FBE2CB /* LoopKit.framework */,
 				272DFE6D223E909500FBE2CB /* LoopKitUI.framework */,
 				43A8EC94210E67B000A81379 /* HealthKit.framework */,
@@ -1111,6 +1123,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/$(CARTHAGE_PLATFORM_PATH_$(PLATFORM_NAME))",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MiaomiaoClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1147,6 +1160,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/$(CARTHAGE_PLATFORM_PATH_$(PLATFORM_NAME))",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = MiaomiaoClient/Info.plist;
