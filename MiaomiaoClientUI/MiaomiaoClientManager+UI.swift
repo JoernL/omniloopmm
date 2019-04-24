@@ -8,7 +8,7 @@
 import LoopKit
 import LoopKitUI
 import HealthKit
-import CGMBLEkit
+import CGMBLEKit
 import MiaomiaoClient
 
 
