@@ -9,11 +9,10 @@ import LoopKit
 import LoopKitUI
 import HealthKit
 import CGMBLEKit
-import CGMBLEKitUI
 import MiaomiaoClient
 
 
-extension MiaoMiaoClientManager: CGMManagerUI {
+/*extension MiaoMiaoClientManager: CGMManagerUI {
     public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
         let setupVC = TransmitterSetupViewController.instantiateFromStoryboard()
         setupVC.cgmManagerType = self
@@ -27,7 +26,7 @@ extension MiaoMiaoClientManager: CGMManagerUI {
             return settings
         //return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true)
     }
-
+*/
     public var smallImage: UIImage? {
         return nil
     }
