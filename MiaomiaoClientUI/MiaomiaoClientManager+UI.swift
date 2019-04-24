@@ -13,14 +13,14 @@ import MiaomiaoClient
 
 extension MiaoMiaoClientManager: CGMManagerUI {
     public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
-        let setupVC = TransmitterSetupViewController.instantiateFromStoryboard()
+        let setupVC = CGMManagerSetupViewController.instantiateFromStoryboard()
             setupVC.cgmManagerType = self
             return setupVC
 //        return MiaomiaoClientSetupViewController()
     }
 
     public func settingsViewController(for glucoseUnit: HKUnit) -> (UIViewController & CompletionNotifying) {
-        let settings = TransmitterSettingsViewController(cgmManager: self, glucoseUnit: .milligramsPerDeciliter)
+        let settings = MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: .milligramsPerDeciliter)
             let nav = SettingsNavigationViewController(rootViewController: settings)
             return nav
         //return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true)
