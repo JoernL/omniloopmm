@@ -8,25 +8,18 @@
 import LoopKit
 import LoopKitUI
 import HealthKit
-import CGMBLEKit
 import MiaomiaoClient
 
 
 extension MiaoMiaoClientManager: CGMManagerUI {
-/*    public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
-        let setupVC = TransmitterSetupViewController.instantiateFromStoryboard()
-        setupVC.cgmManagerType = self
-        return setupVC
-
-        //        return MiaomiaoClientSetupViewController()
+    public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
+        return MiaomiaoClientSetupViewController()
     }
 
     public func settingsViewController(for glucoseUnit: HKUnit) -> (UIViewController & CompletionNotifying) {
-        let settings = MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: .milligramsPerDeciliter, allowsDeletion: true)
-            return settings
-        //return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true)
+        return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true)
     }
-*/
+
     public var smallImage: UIImage? {
         return nil
     }
