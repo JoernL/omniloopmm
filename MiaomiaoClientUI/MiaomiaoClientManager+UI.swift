@@ -12,8 +12,8 @@ import CGMBLEKit
 import MiaomiaoClient
 
 
-/*extension MiaoMiaoClientManager: CGMManagerUI {
-    public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
+extension MiaoMiaoClientManager: CGMManagerUI {
+/*    public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
         let setupVC = TransmitterSetupViewController.instantiateFromStoryboard()
         setupVC.cgmManagerType = self
         return setupVC

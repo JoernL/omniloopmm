@@ -60,14 +60,14 @@ class MiaomiaoClientSetupViewController: UINavigationController, CGMManagerSetup
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc private func cancel() {
+    /*@objc private func cancel() {
         setupDelegate?.cgmManagerSetupViewControllerDidCancel(self)
     }
 
     @objc private func save() {
         if let cgmManager = cgmManager {
             setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: cgmManager)
-        }
+        }*/
         
     }
 
