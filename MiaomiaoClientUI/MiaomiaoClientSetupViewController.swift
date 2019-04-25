@@ -61,13 +61,14 @@ class MiaomiaoClientSetupViewController: UINavigationController, CGMManagerSetup
     }
 
     @objc private func cancel() {
-        setupDelegate?.cgmManagerSetupViewControllerDidCancel(self)
+        if let cgmManager = cgmManager {        setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager:      cgmManager.disconnect()
+        }
     }
 
     @objc private func save() {
         if let cgmManager = cgmManager {
-            setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: cgmManager, CompletionNotifying.self)
-                
+            setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: cgmManager)
+            
         }
         
     }
