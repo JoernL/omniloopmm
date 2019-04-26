@@ -18,7 +18,7 @@ extension MiaoMiaoClientManager: CGMManagerUI {
     }
 
     public func settingsViewController(for glucoseUnit: HKUnit) -> (UIViewController & CompletionNotifying) {
-        return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true) as! (UIViewController & CompletionNotifying)
+        return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true) // as! (UIViewController & CompletionNotifying)
         
     }
 
