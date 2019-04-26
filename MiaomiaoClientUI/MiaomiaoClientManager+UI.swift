@@ -13,12 +13,14 @@ import MiaomiaoClient
 
 extension MiaoMiaoClientManager: CGMManagerUI {
     public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
-        return MiaomiaoClientSetupViewController() as! (UIViewController & CGMManagerSetupViewController & CompletionNotifying)
+        return MiaomiaoClientSetupViewController()
+        //return MiaomiaoClientSetupViewController() as! (UIViewController & CGMManagerSetupViewController & CompletionNotifying)
         
     }
 
     public func settingsViewController(for glucoseUnit: HKUnit) -> (UIViewController & CompletionNotifying) {
-        return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true) as! (UIViewController & CompletionNotifying)
+        return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true)
+        //return MiaomiaoClientSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit, allowsDeletion: true) as! (UIViewController & CompletionNotifying)
         
     }
 
