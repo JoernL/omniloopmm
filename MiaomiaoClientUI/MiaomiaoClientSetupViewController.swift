@@ -11,7 +11,9 @@ import LoopKitUI
 import MiaomiaoClient
 
 
-class MiaomiaoClientSetupViewController: UINavigationController, CGMManagerSetupViewController {
+class MiaomiaoClientSetupViewController: UINavigationController, CGMManagerSetupViewController, CompletionNotifying {
+    var completionDelegate: CompletionDelegate?
+    
     var setupDelegate: CGMManagerSetupViewControllerDelegate?
 
     lazy var cgmManager : MiaoMiaoClientManager? =  MiaoMiaoClientManager()

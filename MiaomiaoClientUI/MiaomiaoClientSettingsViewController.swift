@@ -12,7 +12,9 @@ import LoopKitUI
 import MiaomiaoClient
 
 
-public class MiaomiaoClientSettingsViewController: UITableViewController {
+public class MiaomiaoClientSettingsViewController: UITableViewController, CompletionNotifying {
+    public var completionDelegate: CompletionDelegate?
+    
     private let isDemoMode = false
     public var cgmManager: MiaoMiaoClientManager?
 
