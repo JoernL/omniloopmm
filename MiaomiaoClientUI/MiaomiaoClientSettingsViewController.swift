@@ -353,6 +353,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             return LocalizedString("Sensor Info", comment: "Section title for latest sensor info")
         case .latestReading:
             return LocalizedString("Latest Reading", comment: "Section title for latest glucose reading")
+        case .extraOffset:
+            return "Extra Offset"
         case .delete:
             return nil
         case .latestBridgeInfo:
