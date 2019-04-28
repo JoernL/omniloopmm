@@ -54,6 +54,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     private enum Section: Int {
         case authentication
         case latestReading
+        case extraOffset
         case sensorInfo
         case latestBridgeInfo
         case latestCalibrationData
@@ -61,7 +62,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         
         case delete
 
-        static let count = 6
+        static let count = 7
     }
 
     override public func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,6 +75,12 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         case trend
         case footerChecksum
         static let count = 4
+    }
+    
+    private enum extraOffsetRow: Int {
+        case offset
+        
+        static let count = 1
     }
     
     private enum LatestSensorInfoRow: Int {
@@ -116,6 +123,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             return 1
         case .latestReading:
             return LatestReadingRow.count
+        case .extraOffset:
+            return extraOffsetRow.count
         case .sensorInfo:
             return LatestSensorInfoRow.count
         case .delete:
@@ -201,6 +210,25 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             cell.tintColor = .delete
             cell.isEnabled = true
             return cell
+        
+        case .extraOffset:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.className, for: indexPath) as! TextFieldTableViewCell
+            
+            
+            
+            
+                
+                
+            
+                
+            
+                
+            
+            }
+            
+            return cell
+            
         case .latestBridgeInfo:
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
