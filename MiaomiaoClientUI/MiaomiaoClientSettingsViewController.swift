@@ -399,10 +399,10 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             }
             let vc = AuthenticationViewController(authentication: service)
             vc.authenticationObserver = { [weak self] (service) in
-                self?.miaomiaoService = service
+                self?.cgmManager?.miaomiaoService = service
                 
                 let keychain = KeychainManager()
-                keychain.replaceGenericPassword(extraOffset, forService: miaomiaoService)
+                keychain.replaceGenericPassword(extraOffset, forService: service)
                 
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
