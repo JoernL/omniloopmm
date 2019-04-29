@@ -91,8 +91,6 @@
 		43AB5127213315D300B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB5125213315D300B3D58D /* Localizable.strings */; };
 		43AB51362133177800B3D58D /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB51352133177800B3D58D /* LocalizedString.swift */; };
 		43AB51372133177800B3D58D /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB51352133177800B3D58D /* LocalizedString.swift */; };
-		80A51BB522775241006739D1 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A51BB422775241006739D1 /* TextViewController.swift */; };
-		80A51BB7227752B2006739D1 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A51BB6227752B2006739D1 /* TextViewCell.swift */; };
 		80C68A0D227262FF004CC37E /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C68A0C227262FF004CC37E /* HKUnit.swift */; };
 		80C68A0E2272630F004CC37E /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C68A0C227262FF004CC37E /* HKUnit.swift */; };
 /* End PBXBuildFile section */
@@ -245,8 +243,6 @@
 		43C418AE1CE0488900405B6A /* LibreGlucose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibreGlucose.swift; sourceTree = "<group>"; };
 		8000C8F922707DA8001788EF /* CGMBLEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CGMBLEKit.framework; path = Carthage/Build/iOS/CGMBLEKit.framework; sourceTree = "<group>"; };
 		8000C8FB22707DBD001788EF /* CGMBLEKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CGMBLEKitUI.framework; path = Carthage/Build/iOS/CGMBLEKitUI.framework; sourceTree = "<group>"; };
-		80A51BB422775241006739D1 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
-		80A51BB6227752B2006739D1 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		80C68A0C227262FF004CC37E /* HKUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -432,8 +428,6 @@
 				43A8EC85210E664300A81379 /* Info.plist */,
 				27CBEB3B225FB3A7004F7BF5 /* NibLoadable.swift */,
 				27CBEB5122613C72004F7BF5 /* AlarmTimeInputRangeCell.bundle */,
-				80A51BB422775241006739D1 /* TextViewController.swift */,
-				80A51BB6227752B2006739D1 /* TextViewCell.swift */,
 			);
 			path = MiaomiaoClientUI;
 			sourceTree = "<group>";
@@ -768,14 +762,12 @@
 				43A8EC97210E680100A81379 /* ShareService+UI.swift in Sources */,
 				43AB51372133177800B3D58D /* LocalizedString.swift in Sources */,
 				27CFAB5E224AB265006DEFE3 /* CollectionExtensions.swift in Sources */,
-				80A51BB522775241006739D1 /* TextViewController.swift in Sources */,
 				27CBEB3C225FB3A7004F7BF5 /* NibLoadable.swift in Sources */,
 				27CFAB5522496C7A006DEFE3 /* DoubleExtensions.swift in Sources */,
 				80C68A0E2272630F004CC37E /* HKUnit.swift in Sources */,
 				27CBEB3F225FE5CB004F7BF5 /* AlarmSettingsTableViewController.swift in Sources */,
 				4325E9D3210E6ADA00969CE5 /* IdentifiableClass.swift in Sources */,
 				27CBEB552261DF9D004F7BF5 /* AlarmTimeInputRangeCell.swift in Sources */,
-				80A51BB7227752B2006739D1 /* TextViewCell.swift in Sources */,
 				43A8EC91210E676500A81379 /* MiaomiaoClientManager+UI.swift in Sources */,
 				43A8EC90210E676500A81379 /* MiaomiaoClientSetupViewController.swift in Sources */,
 			);
