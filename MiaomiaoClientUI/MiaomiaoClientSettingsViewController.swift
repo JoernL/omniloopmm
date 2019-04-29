@@ -21,6 +21,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     public let glucoseUnit: HKUnit
 
     public let allowsDeletion: Bool
+    
+    public extraOffset = 0
 
     public init(cgmManager: MiaoMiaoClientManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
@@ -124,7 +126,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         case .latestReading:
             return LatestReadingRow.count
         case .extraOffset:
-            return extraOffsetRow.count
+            return 1
         case .sensorInfo:
             return LatestSensorInfoRow.count
         case .delete:
@@ -213,22 +215,18 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         
         case .extraOffset:
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.className, for: indexPath) as! TextFieldTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
             
             
+            cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
+            let tokenLength = cgmManager?.miaomiaoService.accessToken?.count ?? 0
             
-                
-                
-            
-                
-            
-                
-            
-            
+            cell.detailTextLabel?.text = "Extra Offset"
+            cell.accessoryType = .disclosureIndicator
             
             return cell
-            
+           
         case .latestBridgeInfo:
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
@@ -354,7 +352,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         case .latestReading:
             return LocalizedString("Latest Reading", comment: "Section title for latest glucose reading")
         case .extraOffset:
-            return "Extra Offset"
+            return nil
         case .delete:
             return nil
         case .latestBridgeInfo:
@@ -391,6 +389,30 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             }
 
             show(vc, sender: nil)
+            
+            
+            
+        case .authentication:
+            guard let service = miaomiaoService else {
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+                break
+            }
+            let vc = AuthenticationViewController(authentication: service)
+            vc.authenticationObserver = { [weak self] (service) in
+                self?.miaomiaoService = service
+                
+                let keychain = KeychainManager()
+                keychain.replaceGenericPassword(extraOffset: , forService: miaomiaoService)
+                
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+            
+            show(vc, sender: nil)
+            
+            
+            
+            
+            
         case .latestReading:
             tableView.deselectRow(at: indexPath, animated: true)
         case .delete:
