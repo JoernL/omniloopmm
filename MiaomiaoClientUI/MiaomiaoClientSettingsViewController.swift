@@ -393,21 +393,22 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             
         case .extraOffset:
-            guard let service = cgmManager?.miaomiaoService else {
+            
+            guard let service = ViewTextController else {
+                NSLog("dabear:: no miaomiaoservice?")
                 self.tableView.reloadRows(at: [indexPath], with: .none)
                 break
             }
-            let vc = AuthenticationViewController(authentication: service)
-            vc.authenticationObserver = { [weak self] (service) in
-                self?.cgmManager?.miaomiaoService = service
+            let vc = ViewTextController
+            vc.textFieldShouldEndEditing()
                 
-                let keychain = KeychainManager()
-                keychain.replaceGenericPassword(extraOffset, forService: service.title, "0")
-                
-                self?.tableView.reloadRows(at: [indexPath], with: .none)
-            }
+            
+            
             
             show(vc, sender: nil)
+            
+            
+            
             
             
             
