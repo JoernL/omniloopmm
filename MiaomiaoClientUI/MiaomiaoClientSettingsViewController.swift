@@ -402,7 +402,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 self?.cgmManager?.miaomiaoService = service
                 
                 let keychain = KeychainManager()
-                keychain.replaceGenericPassword(extraOffset, forService: service)
+                keychain.replaceGenericPassword(extraOffset, forService: service.title"0")
                 
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
