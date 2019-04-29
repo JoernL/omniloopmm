@@ -93,8 +93,6 @@
 		43AB51372133177800B3D58D /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB51352133177800B3D58D /* LocalizedString.swift */; };
 		80A51BB522775241006739D1 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A51BB422775241006739D1 /* TextViewController.swift */; };
 		80A51BB7227752B2006739D1 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A51BB6227752B2006739D1 /* TextViewCell.swift */; };
-		80A51BBE2277562E006739D1 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A51BBD2277562E006739D1 /* TextInputTableViewCell.swift */; };
-		80A51BC02277567F006739D1 /* ViewTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A51BBF2277567F006739D1 /* ViewTextController.swift */; };
 		80C68A0D227262FF004CC37E /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C68A0C227262FF004CC37E /* HKUnit.swift */; };
 		80C68A0E2272630F004CC37E /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C68A0C227262FF004CC37E /* HKUnit.swift */; };
 /* End PBXBuildFile section */
@@ -249,8 +247,6 @@
 		8000C8FB22707DBD001788EF /* CGMBLEKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CGMBLEKitUI.framework; path = Carthage/Build/iOS/CGMBLEKitUI.framework; sourceTree = "<group>"; };
 		80A51BB422775241006739D1 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		80A51BB6227752B2006739D1 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
-		80A51BBD2277562E006739D1 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
-		80A51BBF2277567F006739D1 /* ViewTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTextController.swift; sourceTree = "<group>"; };
 		80C68A0C227262FF004CC37E /* HKUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -359,7 +355,6 @@
 		432B0E7E1CDFC3C50045347B = {
 			isa = PBXGroup;
 			children = (
-				80A51BBA22775557006739D1 /* CustomTextInputTableViewCell */,
 				2729D6A62220C1030030E1B8 /* LibreSensor */,
 				2729D671221F42070030E1B8 /* Bluetooth */,
 				432B0E8A1CDFC3C50045347B /* MiaomiaoClient */,
@@ -452,15 +447,6 @@
 				27CFAB5D224AB265006DEFE3 /* CollectionExtensions.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		80A51BBA22775557006739D1 /* CustomTextInputTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				80A51BBD2277562E006739D1 /* TextInputTableViewCell.swift */,
-				80A51BBF2277567F006739D1 /* ViewTextController.swift */,
-			);
-			path = CustomTextInputTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -788,8 +774,6 @@
 				80C68A0E2272630F004CC37E /* HKUnit.swift in Sources */,
 				27CBEB3F225FE5CB004F7BF5 /* AlarmSettingsTableViewController.swift in Sources */,
 				4325E9D3210E6ADA00969CE5 /* IdentifiableClass.swift in Sources */,
-				80A51BC02277567F006739D1 /* ViewTextController.swift in Sources */,
-				80A51BBE2277562E006739D1 /* TextInputTableViewCell.swift in Sources */,
 				27CBEB552261DF9D004F7BF5 /* AlarmTimeInputRangeCell.swift in Sources */,
 				80A51BB7227752B2006739D1 /* TextViewCell.swift in Sources */,
 				43A8EC91210E676500A81379 /* MiaomiaoClientManager+UI.swift in Sources */,

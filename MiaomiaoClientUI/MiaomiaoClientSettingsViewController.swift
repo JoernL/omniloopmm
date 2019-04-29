@@ -79,7 +79,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         static let count = 4
     }
     
-    private enum extraOffsetRow: Int {
+    private enum ExtraOffsetRow: Int {
         case offset
         
         static let count = 1
@@ -217,11 +217,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
-            
-            
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
-            let tokenLength = cgmManager?.miaomiaoService.accessToken?.count ?? 0
-            
+            let tokenLength = 0
             cell.detailTextLabel?.text = "Extra Offset"
             cell.accessoryType = .disclosureIndicator
             
@@ -394,19 +391,21 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
         case .extraOffset:
             
-            guard let service = ViewTextController else {
+          guard let service = cgmManager?.miaomiaoService else {
                 NSLog("dabear:: no miaomiaoservice?")
                 self.tableView.reloadRows(at: [indexPath], with: .none)
                 break
             }
-            let vc = ViewTextController
-            vc.textFieldShouldEndEditing()
+            let vc = AuthenticationViewController(authentication: service)
+            vc.authenticationObserver = { [weak self] (service) in
+                self?.cgmManager?.miaomiaoService = service
                 
-            
-            
+                let offset = KeychainManager()
+                offset.replaceGenericPassword(offset: String?, forService: nil)
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+            }
             
             show(vc, sender: nil)
-            
             
             
             
