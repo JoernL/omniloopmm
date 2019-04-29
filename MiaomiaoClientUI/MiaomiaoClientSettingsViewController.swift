@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public extraOffset = 0
+    public var extraOffset = 0
 
     public init(cgmManager: MiaoMiaoClientManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
@@ -392,17 +392,17 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             
             
-        case .authentication:
-            guard let service = miaomiaoService else {
+        case .extraOffset:
+            guard let service = MiaomiaoService else {
                 self.tableView.reloadRows(at: [indexPath], with: .none)
                 break
             }
             let vc = AuthenticationViewController(authentication: service)
             vc.authenticationObserver = { [weak self] (service) in
-                self?.miaomiaoService = service
+                self?.MiaomiaoService = service
                 
                 let keychain = KeychainManager()
-                keychain.replaceGenericPassword(extraOffset: , forService: miaomiaoService)
+                keychain.replaceGenericPassword(extraOffset: , forService: MiaomiaoService)
                 
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
