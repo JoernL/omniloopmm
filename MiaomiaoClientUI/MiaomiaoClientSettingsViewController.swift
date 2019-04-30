@@ -404,8 +404,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 let urlString = "http://www.example.com"
                 guard
                     let url = URL(string: urlString)
-                try? Data(contentsOf: url)
-                else { return }
+                       else { return }
                 offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
