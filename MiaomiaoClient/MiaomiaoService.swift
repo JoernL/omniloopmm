@@ -14,7 +14,7 @@ import os.log
 public class MiaomiaoService: ServiceAuthentication {
     public var credentialValues: [String?]
 
-    public var extraOffset = "0"
+    public var extraOffset: String?
     
     public let title: String = LocalizedString("MiaomiaoService", comment: "The title of the MiaomiaoService")
     
@@ -33,7 +33,7 @@ public class MiaomiaoService: ServiceAuthentication {
             
             
         }
-        
+        extraOffset = "0"
        
         
     }
