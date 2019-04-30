@@ -413,7 +413,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 
               
- */
+ 
  /*               struct RuntimeError: Error {
                     let message: String
                     
@@ -424,7 +424,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     public var localizedDescription: String {
                         return message
                     }
-  */              }
+  */              //}
                 
                 
                 
@@ -434,7 +434,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
-            
+        
             show(vc, sender: nil)
             
             
