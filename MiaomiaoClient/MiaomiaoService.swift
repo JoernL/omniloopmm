@@ -33,7 +33,7 @@ public class MiaomiaoService: ServiceAuthentication {
             
             
         }
-        extraOffset = "0"
+        let extraOffset = "0"
        
         
     }
