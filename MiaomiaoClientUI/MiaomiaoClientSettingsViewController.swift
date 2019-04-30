@@ -430,7 +430,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 
                 
-                offset.replaceGenericPassword(self.extraOffset, forService: "test") throw RuntimeError("Error")
+                //offset.replaceGenericPassword(self.extraOffset, forService: "test") throw RuntimeError("Error")
                 
                 
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
