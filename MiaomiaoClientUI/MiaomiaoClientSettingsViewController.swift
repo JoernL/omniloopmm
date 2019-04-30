@@ -401,6 +401,16 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 self?.cgmManager?.miaomiaoService = service
                 
                 let offset = KeychainManager()
+                
+                
+                try
+                    
+                    
+                    offset.replaceGenericPassword(self.extraOffset, forService: "test") throw RuntimeError("Error")
+                    
+                    
+                
+                
               /*  let urlString = "http://www.example.com"
                 guard
                     let url = URL(string: urlString)
