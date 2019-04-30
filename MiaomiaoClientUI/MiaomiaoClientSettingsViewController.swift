@@ -406,7 +406,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     let url = URL(string: urlString)
                        else { return }
  */
-                offset.replaceGenericPassword(extraOffset, forService: "test")
+                
+                offset.replaceGenericPassword(self.extraOffset, forService: "test") throws -> String
                 
                 
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
