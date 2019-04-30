@@ -404,7 +404,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                 try
-                    offset.replaceGenericPassword(self.extraOffset, forService: "test")
+                    offset.replaceGenericPassword(extraOffset, forService: "test")
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
