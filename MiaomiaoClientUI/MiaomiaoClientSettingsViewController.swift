@@ -401,22 +401,20 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 self?.cgmManager?.miaomiaoService = service
                 
                 let offset = KeychainManager()
-                
-                
+                do{
+                    NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                 try
-                    
-                    
-                    offset.replaceGenericPassword(self.extraOffset, forService: "test"); throw RuntimeError("Error")
+                    offset.replaceGenericPassword(self.extraOffset, forService: "test")
+                } catch {
+                    NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
+                }
                     
                     
                 
                 
-              /*  let urlString = "http://www.example.com"
-                guard
-                    let url = URL(string: urlString)
-                       else { return }
+              
  */
-                struct RuntimeError: Error {
+ /*               struct RuntimeError: Error {
                     let message: String
                     
                     init(_ message: String) {
@@ -426,7 +424,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     public var localizedDescription: String {
                         return message
                     }
-                }
+  */              }
                 
                 
                 
