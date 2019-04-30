@@ -22,11 +22,14 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
+    public let extraOffset: String?
+    
     public init(cgmManager: MiaoMiaoClientManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion
-
+        
+        
         super.init(style: .grouped)
     }
 
@@ -431,6 +434,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
+                let extraOffset = service.extraOffset
             }
         
             show(vc, sender: nil)
