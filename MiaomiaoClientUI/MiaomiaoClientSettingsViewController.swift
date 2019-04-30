@@ -405,7 +405,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 guard
                     let url = URL(string: urlString)
                        else { return }
-                offset.setInternetPassword(extraOffset, account: "test", atURL: url)
+                self.offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
             
