@@ -401,7 +401,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 self?.cgmManager?.miaomiaoService = service
                 
                 let offset = KeychainManager()
-                offset.setInternetPassword(extraOffset, account: "test", atURL: <http://example.com/>)
+                offset.setInternetPassword(extraOffset, account: "test", atURL: (string: "http://www.example.com") as URL)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
             
