@@ -406,8 +406,21 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     let url = URL(string: urlString)
                        else { return }
  */
-                extension String: Error {}
-                offset.replaceGenericPassword(self.extraOffset, forService: "test") throw "Error"
+                struct RuntimeError: Error {
+                    let message: String
+                    
+                    init(_ message: String) {
+                        self.message = message
+                    }
+                    
+                    public var localizedDescription: String {
+                        return message
+                    }
+                }
+                
+                
+                
+                offset.replaceGenericPassword(self.extraOffset, forService: "test") throw RuntimeError("Error")
                 
                 
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
