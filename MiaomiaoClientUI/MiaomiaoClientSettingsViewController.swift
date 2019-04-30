@@ -401,9 +401,9 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 self?.cgmManager?.miaomiaoService = service
                 
                 let offset = KeychainManager()
-                let url = "http://www.example.com"
+                let urlString = "http://www.example.com"
                 guard
-                    let url = URL(string: url)
+                    let url = URL(string: urlString)
                 try? Data(contentsOf: url)
                 else { return }
                 offset.setInternetPassword(extraOffset, account: "test", atURL: url)
