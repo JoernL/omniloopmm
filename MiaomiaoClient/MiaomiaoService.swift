@@ -14,6 +14,8 @@ import os.log
 public class MiaomiaoService: ServiceAuthentication {
     public var credentialValues: [String?]
 
+    public var extraOffset = "0"
+    
     public let title: String = LocalizedString("MiaomiaoService", comment: "The title of the MiaomiaoService")
     
    
@@ -28,6 +30,8 @@ public class MiaomiaoService: ServiceAuthentication {
         
         if let accessToken = accessToken, let url = url {
             isAuthorized = true
+            
+            
         }
         
        
