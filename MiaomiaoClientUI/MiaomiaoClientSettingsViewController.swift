@@ -219,7 +219,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
             let tokenLength = 0
-            cell.detailTextLabel?.text = "Extra Offset"
+            cell.detailTextLabel?.text = extraOffset
             cell.accessoryType = .disclosureIndicator
             
             return cell
