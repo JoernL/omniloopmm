@@ -406,7 +406,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 try
                     
                     
-                    offset.replaceGenericPassword(self.extraOffset, forService: "test") throw RuntimeError("Error")
+                    offset.replaceGenericPassword(self.extraOffset, forService: "test"); throw RuntimeError("Error")
                     
                     
                 
