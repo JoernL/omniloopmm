@@ -51,7 +51,7 @@ public class MiaomiaoService: ServiceAuthentication {
         return URL(string: urlString)
     }
 
-    public var isAuthorized: Bool = true
+    public var isAuthorized: Bool = false
 
     public func verify(_ completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         
@@ -62,15 +62,15 @@ public class MiaomiaoService: ServiceAuthentication {
  
         let client = LibreOOPClient(accessToken: accessToken, site: url.absoluteString)
         
-     /*   client.verifyToken { (success) in
+        client.verifyToken { (success) in
             var error : Error? = nil
             if !success {
-               error = LibreError.invalidAutoCalibrationCredentials
+               //error = LibreError.invalidAutoCalibrationCredentials
             }
             completion(success, error)
         }
         
-*/    }
+    }
 
     public func reset() {
         os_log("dabear:: miaomiaoservice reset called")
