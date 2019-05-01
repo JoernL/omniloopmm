@@ -22,12 +22,13 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public let extraOffset = "0"
+    public let extraOffset: String
     
     public init(cgmManager: MiaoMiaoClientManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion
+        self.extraOffset = "0"
         
         
         super.init(style: .grouped)
@@ -405,7 +406,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                 try
-                    offset.replaceGenericPassword(service.extraOffset, forService: "test")
+                    offset.replaceGenericPassword(service.extraOffset, forService: extraOffset)
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
