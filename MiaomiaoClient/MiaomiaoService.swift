@@ -51,7 +51,7 @@ public class MiaomiaoService: ServiceAuthentication {
         return URL(string: urlString)
     }
 
-    public var isAuthorized: Bool = false
+    public var isAuthorized: Bool = true
 
     public func verify(_ completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         
