@@ -413,7 +413,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                 try
                    
-                    offset.setInternetPassword(extraOffset, account: extraOffset, atURL: "test", label: "test")
+                    offset.setInternetPassword(extraOffset, account: extraOffset, atURL: service.url, label: "test")
                     
                     
                     //offset.getInternetCredentials(account: service.accessToken, url: service.url, label: "test")
