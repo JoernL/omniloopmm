@@ -30,7 +30,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion
-        self.extraOffset = "0"
+        //self.extraOffset = "0"
         
         
         super.init(style: .grouped)
@@ -223,7 +223,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
             let tokenLength = 0
-            cell.detailTextLabel?.text = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
+            cell.detailTextLabel?.text = extraOffset
                 
             cell.accessoryType = .disclosureIndicator
             
