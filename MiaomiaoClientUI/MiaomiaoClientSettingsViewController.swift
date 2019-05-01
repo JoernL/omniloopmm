@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public var extraOffset: String
+    public var extraOffset: String?
     
     public var url = "http://example.com"
     
@@ -30,7 +30,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion
-        self.extraOffset = "0"
+        //self.extraOffset = "0"
         
         
         super.init(style: .grouped)
