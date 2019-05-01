@@ -30,7 +30,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion
-        //self.extraOffset = "0"
+        self.extraOffset = "0"
         
         
         super.init(style: .grouped)
@@ -411,7 +411,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
-                    try ExtraOffsetRow = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
+                    try extraOffset = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
                     
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
