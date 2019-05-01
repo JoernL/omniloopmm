@@ -14,7 +14,7 @@ import os.log
 public class MiaomiaoService: ServiceAuthentication {
     public var credentialValues: [String?]
 
-    public var extraOffset: String?
+    
     
     public let title: String = LocalizedString("MiaomiaoService", comment: "The title of the MiaomiaoService")
     
@@ -59,18 +59,18 @@ public class MiaomiaoService: ServiceAuthentication {
             completion(false, nil)
             return
         }
-        
+ 
         let client = LibreOOPClient(accessToken: accessToken, site: url.absoluteString)
         
-        client.verifyToken { (success) in
+     /*   client.verifyToken { (success) in
             var error : Error? = nil
             if !success {
-                error = LibreError.invalidAutoCalibrationCredentials
+               error = LibreError.invalidAutoCalibrationCredentials
             }
             completion(success, error)
         }
         
-    }
+*/    }
 
     public func reset() {
         os_log("dabear:: miaomiaoservice reset called")
@@ -118,8 +118,17 @@ extension KeychainManager {
         let credentials: InternetCredentials?
         
         
-        credentials = InternetCredentials(username: "whatever", password: accessToken!, url: url!)
-        return credentials!.password
+            if let accessToken = accessToken, let url = url {
+                credentials = InternetCredentials(username: "whatever", password: accessToken, url: url)
+        } else {
+            
+                credentials = InternetCredentials(username: "whatever", password: accessToken!, url: url!)
+                
+                
+        }
+        
+        
+                return credentials!.password
     }
     
     
