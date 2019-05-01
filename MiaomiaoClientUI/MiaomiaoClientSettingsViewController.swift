@@ -402,11 +402,18 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             vc.authenticationObserver = { [weak self] (service) in
                 self?.cgmManager?.miaomiaoService = service
                 
+
+                
+                
+
                 let offset = KeychainManager()
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                 try
-                    offset.replaceGenericPassword(service.extraOffset, forService: self.extraOffset)
+                   
+                    
+                    offset.replaceGenericPassword(service.accessToken, forService: "test")
+                    //offset.replaceGenericPassword(service.extraOffset, forService: "test")
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
@@ -435,7 +442,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
-                let extraOffset = service.extraOffset
+                let extraOffset = service.accessToken
             }
         
             show(vc, sender: nil)
