@@ -416,7 +416,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     //offset.getInternetCredentials(account: service.accessToken, url: service.url, label: "test")
                     //offset.replaceGenericPassword(service.accessToken, forService: "test")
                     offset.replaceGenericPassword(service.password, forService: "test")
-                    extraOffset = password
+                    extraOffset = service.password
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }

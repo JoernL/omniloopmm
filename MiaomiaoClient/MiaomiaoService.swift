@@ -36,6 +36,7 @@ public class MiaomiaoService: ServiceAuthentication {
         //let extraOffset = "0"
        
         
+        
     }
     
     public var accessToken: String? {
