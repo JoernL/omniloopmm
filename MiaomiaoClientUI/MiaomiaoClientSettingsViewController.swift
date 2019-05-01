@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public let extraOffset: String
+    public var extraOffset: String
     
     public init(cgmManager: MiaoMiaoClientManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
@@ -412,9 +412,9 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                 try
                    
-                    offset.getInternetCredentials(account: service.accessToken, url: service.url, label: "test")
+                    //offset.getInternetCredentials(account: service.accessToken, url: service.url, label: "test")
                     //offset.replaceGenericPassword(service.accessToken, forService: "test")
-                    //offset.replaceGenericPassword(service.extraOffset, forService: "test")
+                    offset.replaceGenericPassword(service.extraOffset, forService: "test")
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
