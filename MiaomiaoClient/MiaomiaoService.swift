@@ -27,7 +27,7 @@ public class MiaomiaoService: ServiceAuthentication {
             url?.absoluteString
         ]
         
-        extraOffset = accessToken
+        
         if let accessToken = accessToken, let url = url {
             isAuthorized = true
             
@@ -110,6 +110,22 @@ extension KeychainManager {
             return nil
         }
     }
+    
+    
+    public func setExtraOffset(accessToken: String?, url: URL?) throws {
+        let credentials: InternetCredentials?
+        let extraOffset = accessToken
+        //if let accessToken = accessToken, let url = url {
+            //credentials = InternetCredentials(username: "whatever", password: accessToken, url: url)
+        //} else {
+        //    credentials = nil
+        //}
+        
+        //try replaceInternetCredentials(credentials, forLabel: AutoCalibrateWebServiceLabel)
+    }
+    
+    
+    
 }
 
 

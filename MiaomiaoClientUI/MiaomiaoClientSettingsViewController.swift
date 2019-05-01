@@ -411,8 +411,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
-                    try offset.setAutoCalibrateWebAccessToken(accessToken: service.accessToken, url: service.url)
-                    extraOffset = service.accessToken
+                    try offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
+                    //extraOffset = service.accessToken
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
