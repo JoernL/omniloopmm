@@ -23,7 +23,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     public let allowsDeletion: Bool
     
     struct sharedSettings {
-        static var extraOffset: String
+        static var extraOffset "0"
     }
     
     public var url = "http://example.com"
