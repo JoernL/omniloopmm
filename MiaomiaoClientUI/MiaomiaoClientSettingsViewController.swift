@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public var extraOffset: String?
+    public let extraOffset: String?
     
     public var url = "http://example.com"
     
@@ -223,7 +223,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
             let tokenLength = 0
-            cell.detailTextLabel?.text = extraOffset
+            cell.detailTextLabel?.text = testvar
             cell.accessoryType = .disclosureIndicator
             
             return cell
@@ -411,7 +411,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
-                    try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
+                    try extraOffset = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
                     
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
