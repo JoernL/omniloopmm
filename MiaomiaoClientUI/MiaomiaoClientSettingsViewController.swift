@@ -443,7 +443,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
-                extraOffset = vc.authentication.accessToken ?? ""
+                self.extraOffset = vc.authentication.accessToken ?? ""
             }
         
             show(vc, sender: nil)
