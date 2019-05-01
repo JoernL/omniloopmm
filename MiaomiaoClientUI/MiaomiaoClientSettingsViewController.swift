@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public var extraOffset: String?
+    public var extraOffset: String
     
     public var url = "http://example.com"
     
@@ -396,6 +396,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
         case .extraOffset:
             
+          
           guard let service = cgmManager?.miaomiaoService else {
                 NSLog("dabear:: no miaomiaoservice?")
                 self.tableView.reloadRows(at: [indexPath], with: .none)
@@ -405,15 +406,14 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             vc.authenticationObserver = { [weak self] (service) in
                 self?.cgmManager?.miaomiaoService = service
                 
-                
-                var testvar :String
-                
                 let offset = KeychainManager()
                 
                 do{
+                    
+                    var testvar: String
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                     try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
-                    
+                    extraOffset = testvar
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
