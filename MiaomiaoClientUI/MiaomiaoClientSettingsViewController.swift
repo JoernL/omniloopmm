@@ -24,6 +24,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     
     public var extraOffset: String
     
+    public var url = "http://example.com"
+    
     public init(cgmManager: MiaoMiaoClientManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
@@ -404,56 +406,21 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 
                 
                 
-
-                
-                
                 
                 let offset = KeychainManager()
+                
                 do{
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
-                try
-                   
-                    offset.setInternetPassword(extraOffset, account: extraOffset, atURL: service.url, label: "test")
-                    
-                    
-                    //offset.getInternetCredentials(account: service.accessToken, url: service.url, label: "test")
-                    //offset.replaceGenericPassword(service.accessToken, forService: "test")
-                    //offset.replaceGenericPassword(service.password, forService: service)
-                    //extraOffset = service.password
+                    try offset.setAutoCalibrateWebAccessToken(accessToken: service.accessToken, url: service.url)
+                    extraOffset = service.accessToken
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
-                    
-                    
                 
-                
-              
- 
- /*               struct RuntimeError: Error {
-                    let message: String
-                    
-                    init(_ message: String) {
-                        self.message = message
-                    }
-                    
-                    public var localizedDescription: String {
-                        return message
-                    }
-  */              //}
-                
-                
-                
-                //offset.replaceGenericPassword(self.extraOffset, forService: "test") throw RuntimeError("Error")
-                
-                
-                //offset.setInternetPassword(extraOffset, account: "test", atURL: url)
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
-                
-            }
-        
-            show(vc, sender: nil)
-            
-            
+          }
+          
+          show(vc, sender: nil)
             
             
             
