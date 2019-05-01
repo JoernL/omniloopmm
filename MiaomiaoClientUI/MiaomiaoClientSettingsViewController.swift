@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    public let extraOffset: String?
+    public var extraOffset: String?
     
     public var url = "http://example.com"
     
@@ -223,7 +223,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
             let tokenLength = 0
-            cell.detailTextLabel?.text = testvar
+            cell.detailTextLabel?.text = extraOffset
             cell.accessoryType = .disclosureIndicator
             
             return cell
@@ -405,7 +405,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 self?.cgmManager?.miaomiaoService = service
                 
                 
-                var testvar :String
+                //var testvar :String
                 
                 let offset = KeychainManager()
                 
