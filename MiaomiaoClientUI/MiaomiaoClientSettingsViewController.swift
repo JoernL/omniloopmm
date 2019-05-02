@@ -406,24 +406,26 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             vc.authenticationObserver = { [weak self] (service) in
                 self?.cgmManager?.miaomiaoService = service
                 
+                var testvar: String
+                
                 let offset = KeychainManager()
                 
                 do{
                     
-                    var testvar: String
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                     try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
-                    self.defaults.set(testvar, forKey: "extraOffset")
+                    //self.defaults.set(testvar, forKey: "extraOffset")
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
                 
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
+                
+                defaults.set(testvar, forKey: "extraOffset")
           }
           
           show(vc, sender: nil)
-            
-            
+          
             
             
             
