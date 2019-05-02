@@ -113,26 +113,17 @@ extension KeychainManager {
     
     
     public func setExtraOffset(accessToken: String?, url: URL?) -> (String)
-    
     {
         let credentials: InternetCredentials?
-        
-        
             if let accessToken = accessToken, let url = url {
                 credentials = InternetCredentials(username: "whatever", password: accessToken, url: url)
         } else {
-            
                 credentials = InternetCredentials(username: "whatever", password: accessToken!, url: url!)
-                
-                
+     
         }
-        
         
                 return credentials!.password
     }
-    
-    
-    
 }
 
 

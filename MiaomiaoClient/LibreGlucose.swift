@@ -10,6 +10,8 @@ import Foundation
 import LoopKit
 import HealthKit
 
+let defaults = UserDefaults.standard
+
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
     public var glucoseDouble: Double
@@ -19,6 +21,8 @@ public struct LibreGlucose {
     public var trend: UInt8
     public let timestamp: Date
     public let collector: String?
+    public let offset = defaults.object(forKey: "extraOffset") as? (UInt16)
+  
 }
 
 extension LibreGlucose: GlucoseValue {
@@ -34,7 +38,7 @@ extension LibreGlucose: GlucoseValue {
 
 extension LibreGlucose: SensorDisplayable {
     public var isStateValid: Bool {
-        return glucose >= 39
+        return (glucose + offset!) >= 39
     }
     
     public var trendType: GlucoseTrend? {
