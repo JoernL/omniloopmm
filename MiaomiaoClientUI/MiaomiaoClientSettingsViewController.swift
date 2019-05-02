@@ -22,9 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    struct sharedSettings {
-        static var extraOffset = "0"
-    }
+    let defaults = UserDefaults.standard
     
     public var url = "http://example.com"
     
@@ -225,7 +223,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
             let tokenLength = 0
-            cell.detailTextLabel?.text = sharedSettings.extraOffset
+            cell.detailTextLabel?.text = defaults.object(forKey: "extraOffset") as? (String) ??
                 
             cell.accessoryType = .disclosureIndicator
             
@@ -415,7 +413,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     var testvar: String
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                     try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
-                    sharedSettings.extraOffset = testvar
+                    defaults.set(testvar, forKey: "extraOffset")
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
