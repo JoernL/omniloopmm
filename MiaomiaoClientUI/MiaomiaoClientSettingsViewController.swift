@@ -11,6 +11,7 @@ import LoopKit
 import LoopKitUI
 import MiaomiaoClient
 
+let defaults = UserDefaults.standard
 
 public class MiaomiaoClientSettingsViewController: UITableViewController, CompletionNotifying {
     public var completionDelegate: CompletionDelegate?
@@ -21,8 +22,6 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     public let glucoseUnit: HKUnit
 
     public let allowsDeletion: Bool
-    
-    let defaults = UserDefaults.standard
     
     public var url = "http://example.com"
     
@@ -223,7 +222,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
             let tokenLength = 0
-            cell.detailTextLabel?.text = defaults.object(forKey: "extraOffset") as? (String) ??
+            cell.detailTextLabel?.text = defaults.object(forKey: "extraOffset") as? (String)
                 
             cell.accessoryType = .disclosureIndicator
             
