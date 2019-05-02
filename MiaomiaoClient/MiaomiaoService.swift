@@ -65,7 +65,7 @@ public class MiaomiaoService: ServiceAuthentication {
         client.verifyToken { (success) in
             var error : Error? = nil
             if !success {
-               //error = LibreError.invalidAutoCalibrationCredentials
+               error = LibreError.invalidAutoCalibrationCredentials
             }
             completion(success, error)
         }
