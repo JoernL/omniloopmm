@@ -22,7 +22,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
 
     public let allowsDeletion: Bool
     
-    let defaults = UserDefaults.standard
+    public let defaults: UserDefaults
     
     public var url = "http://example.com"
     
@@ -30,7 +30,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion
-        //self.extraOffset = "0"
+        self.defaults = defaults
         
         
         super.init(style: .grouped)
@@ -413,7 +413,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                     var testvar: String
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
                     try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
-                    self.defaults.set(testvar, forKey: "extraOffset")
+                    defaults.set(testvar, forKey: "extraOffset")
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
