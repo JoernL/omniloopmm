@@ -34,7 +34,7 @@ extension LibreGlucose: GlucoseValue {
     }
     
     public var quantity: HKQuantity {
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose))
+        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + 20))
     }
 }
 
@@ -43,7 +43,7 @@ extension LibreGlucose: SensorDisplayable {
     
     public var isStateValid: Bool {
         
-         return (glucose + 20) >= 39
+         return glucose >= 39
     }
 
     
