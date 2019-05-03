@@ -16,13 +16,11 @@ public struct LibreGlucose {
     public let unsmoothedGlucose: Double
     public var glucoseDouble: Double
     public var glucose: UInt16 {
-        return
-            UInt16(glucoseDouble.rounded()) + offset!
+        return UInt16(glucoseDouble.rounded())
     }
     public var trend: UInt8
     public let timestamp: Date
     public let collector: String?
-    public var offset = defaults.object(forKey: "extraOffset") as? UInt16
     
     
   
@@ -47,7 +45,9 @@ extension LibreGlucose: SensorDisplayable {
 
     
     public var trendType: GlucoseTrend? {
-        return GlucoseTrend(rawValue: Int(trend))
+        
+        let extraOffset = defaults.object(forKey: "extraOffset") as? UInt8
+        return GlucoseTrend(rawValue: Int(trend + extraOffset!))
     }
     
     public var isLocal: Bool {
