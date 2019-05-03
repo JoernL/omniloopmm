@@ -11,8 +11,7 @@ import LoopKit
 import HealthKit
 
 let defaults = UserDefaults.standard
-let tmp = defaults.object(forKey: "extraOffset") as? Int16
-var extraOffset: Int16 = tmp!
+var extraOffset = defaults.object(forKey: "extraOffset") as? Int16 ?? Int16()
 
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
