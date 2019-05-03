@@ -11,6 +11,8 @@ import LoopKit
 import HealthKit
 
 let defaults = UserDefaults.standard
+let extraOffset = defaults.object(forKey: "extraOffset") as? UInt16
+
 
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
@@ -41,7 +43,6 @@ extension LibreGlucose: SensorDisplayable {
     
     public var isStateValid: Bool {
         
-        let extraOffset = defaults.object(forKey: "extraOffset") as? UInt16
          return (glucose + extraOffset!) >= 39
     }
 
