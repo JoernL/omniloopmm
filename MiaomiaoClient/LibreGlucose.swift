@@ -10,8 +10,8 @@ import Foundation
 import LoopKit
 import HealthKit
 
-let defaults = UserDefaults.standard
-let extraOffset = defaults.object(forKey: "extraOffset") as? UInt16
+//let defaults = UserDefaults.standard
+//let extraOffset = defaults.object(forKey: "extraOffset") as? UInt16
 
 
 public struct LibreGlucose {
@@ -43,7 +43,7 @@ extension LibreGlucose: SensorDisplayable {
     
     public var isStateValid: Bool {
         
-         return (glucose + extraOffset!) >= 39
+         return (glucose + 20) >= 39
     }
 
     
