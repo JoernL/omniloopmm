@@ -11,14 +11,14 @@ import LoopKit
 import HealthKit
 
 let defaults = UserDefaults.standard
-let extraOffset = defaults.object(forKey: "extraOffset") as? UInt16
+let extraOffset = defaults.object(forKey: "extraOffset") as? Int16
 
 
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
     public var glucoseDouble: Double
-    public var glucose: UInt16 {
-        return UInt16(glucoseDouble.rounded())
+    public var glucose: Int16 {
+        return Int16(glucoseDouble.rounded())
     }
     public var trend: UInt8
     public let timestamp: Date
