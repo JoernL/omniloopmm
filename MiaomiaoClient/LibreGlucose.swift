@@ -32,7 +32,8 @@ extension LibreGlucose: GlucoseValue {
     }
     
     public var quantity: HKQuantity {
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose))
+        let extraOffset = defaults.object(forKey: "extraOffset") as? UInt16
+        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + extraOffset!))
     }
 }
 
@@ -45,9 +46,7 @@ extension LibreGlucose: SensorDisplayable {
 
     
     public var trendType: GlucoseTrend? {
-        
-        let extraOffset = defaults.object(forKey: "extraOffset") as? UInt8
-        return GlucoseTrend(rawValue: Int(trend + extraOffset!))
+        return GlucoseTrend(rawValue: Int(trend))
     }
     
     public var isLocal: Bool {
