@@ -32,7 +32,7 @@ extension LibreGlucose: GlucoseValue {
     }
     
     public var quantity: HKQuantity {
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + extraOffset))
+        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + (extraOffset)))
     }
 }
 
