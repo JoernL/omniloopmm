@@ -11,8 +11,8 @@ import LoopKit
 import HealthKit
 
 let defaults = UserDefaults.standard
-let extraOffset = defaults.object(forKey: "extraOffset") as? Int16
-
+let tmp = defaults.object(forKey: "extraOffset") as? Int16
+var extraOffset: Int16 = tmp!
 
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
@@ -32,7 +32,7 @@ extension LibreGlucose: GlucoseValue {
     }
     
     public var quantity: HKQuantity {
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + extraOffset!))
+        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + extraOffset))
     }
 }
 
