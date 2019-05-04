@@ -112,7 +112,7 @@ extension KeychainManager {
     }
     
     
-    public func setExtraOffset(accessToken: String?, url: URL?) -> (String)
+    public func setExtraSlope(accessToken: String?, url: URL?) -> (String)
     {
         let credentials: InternetCredentials?
             if let accessToken = accessToken, let url = url {

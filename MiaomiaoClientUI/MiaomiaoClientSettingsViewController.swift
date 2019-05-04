@@ -59,7 +59,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     private enum Section: Int {
         case authentication
         case latestReading
-        case extraOffset
+        case extraSlope
         case sensorInfo
         case latestBridgeInfo
         case latestCalibrationData
@@ -82,7 +82,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         static let count = 4
     }
     
-    private enum ExtraOffsetRow: Int {
+    private enum ExtraSlopeRow: Int {
         case offset
         
         static let count = 1
@@ -128,7 +128,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             return 1
         case .latestReading:
             return LatestReadingRow.count
-        case .extraOffset:
+        case .extraSlope:
             return 1
         case .sensorInfo:
             return LatestSensorInfoRow.count
@@ -216,13 +216,13 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             cell.isEnabled = true
             return cell
         
-        case .extraOffset:
+        case .extraSlope:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
-            cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
+            cell.textLabel?.text = LocalizedString("Extra Slope", comment: "Title of cell to set an Extra Slope")
             let tokenLength = 0
-            cell.detailTextLabel?.text = defaults.object(forKey: "extraOffset") as? String ?? String()
+            cell.detailTextLabel?.text = defaults.object(forKey: "extraSlope") as? String ?? String()
                 
             cell.accessoryType = .disclosureIndicator
             
@@ -352,7 +352,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             return LocalizedString("Sensor Info", comment: "Section title for latest sensor info")
         case .latestReading:
             return LocalizedString("Latest Reading", comment: "Section title for latest glucose reading")
-        case .extraOffset:
+        case .extraSlope:
             return nil
         case .delete:
             return nil
@@ -393,7 +393,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
             
             
             
-        case .extraOffset:
+        case .extraSlope:
             
           
           guard let service = cgmManager?.miaomiaoService else {
@@ -412,15 +412,15 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
                 do{
                     
                     NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
-                    try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
-                    //self.defaults.set(testvar, forKey: "extraOffset")
+                    try testvar = offset.setExtraSlope (accessToken: service.accessToken, url: service.url)
+                    
                 } catch {
                     NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
                 }
                 
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
                 
-                defaults.set(testvar, forKey: "extraOffset")
+                defaults.set(testvar, forKey: "extraSlope")
           }
           
           show(vc, sender: nil)

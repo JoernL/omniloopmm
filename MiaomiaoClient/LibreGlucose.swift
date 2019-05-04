@@ -15,8 +15,8 @@ let defaults = UserDefaults.standard
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
     public var glucoseDouble: Double
-    public var glucose: Int {
-        return Int(glucoseDouble.rounded())
+    public var glucose: Float {
+        return Float(glucoseDouble.rounded())
     }
     public var trend: UInt8
     public let timestamp: Date
@@ -32,8 +32,8 @@ extension LibreGlucose: GlucoseValue {
     
     public var quantity: HKQuantity {
         
-        let extraOffset = defaults.integer(forKey: "extraOffset")
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + (extraOffset)))
+        let extraSlope = defaults.float(forKey: "extraSlope")
+        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose * extraSlope))
     }
 }
 
