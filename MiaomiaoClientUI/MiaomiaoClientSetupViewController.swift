@@ -48,10 +48,6 @@ class MiaomiaoClientSetupViewController: UINavigationController, CGMManagerSetup
         authVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         authVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         
-        authVC.navigationItem.setLeftBarButton (UIBarButtonItem(barButtonSystemItem: .cancel), animated: false)
-        
-        authVC.navigationItem .setRightBarButton(UIBarButtonItem(barButtonSystemItem: .save), animated: false)
-        
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
