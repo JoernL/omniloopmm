@@ -10,8 +10,7 @@ import Foundation
 import LoopKit
 import HealthKit
 
-public var defaults = UserDefaults.standard
-public var extraOffset = defaults.integer(forKey: "extraOffset") as? Int ?? Int()
+let defaults = UserDefaults.standard
 
 public struct LibreGlucose {
     public let unsmoothedGlucose: Double
@@ -26,11 +25,14 @@ public struct LibreGlucose {
 }
 
 extension LibreGlucose: GlucoseValue {
+    
     public var startDate: Date {
         return timestamp
     }
     
     public var quantity: HKQuantity {
+        
+        let extraOffset = defaults.integer(forKey: "extraOffset")
         return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose + (extraOffset)))
     }
 }

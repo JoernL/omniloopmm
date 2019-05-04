@@ -11,7 +11,7 @@ import LoopKit
 import LoopKitUI
 import MiaomiaoClient
 
-public var defaults = UserDefaults.standard
+let defaults = UserDefaults.standard
 
 public class MiaomiaoClientSettingsViewController: UITableViewController, CompletionNotifying {
     public var completionDelegate: CompletionDelegate?
