@@ -48,9 +48,9 @@ class MiaomiaoClientSetupViewController: UINavigationController, CGMManagerSetup
         authVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         authVC.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         
-        authVC.navigationItem.setLeftBarButtonItems(UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel)) , animated: false)
+        authVC.navigationItem.setLeftBarButtonItem(UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel)) , animated: false)
         
-        authVC.navigationItem.setRightBarButtonItems(UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save)) , animated: false)
+        authVC.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save)) , animated: false)
         
     }
 
