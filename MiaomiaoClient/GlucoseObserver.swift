@@ -18,7 +18,7 @@ public class GlucoseObserver {
         if glucoseValue < 90 {
            
             for _ in 1...3 { AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                Thread.sleep(forTimeInterval: 1)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1000) {}
                 
         }
             
@@ -28,7 +28,7 @@ public class GlucoseObserver {
             
             for _ in 1...3 {
                 AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                    Thread.sleep(forTimeInterval: 1)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1000) {}
             }
         }
     }
