@@ -11,7 +11,7 @@ import AudioToolbox
 
 public class GlucoseObserver {
     
-    let glucoseValue: Double = defaults.object(forKey: "glucoseValue") as! Double
+    let glucoseValue = defaults.float(forKey: "glucoseValue")
     
     public func observe() {
         
