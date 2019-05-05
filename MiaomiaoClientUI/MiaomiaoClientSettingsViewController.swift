@@ -218,6 +218,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
         
         case .extraSlope:
             
+            if (defaults.object(forKey: "extraSlope") == nil)  {          defaults.set("1.0", forKey: "extraSlope")
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
             cell.textLabel?.text = LocalizedString("Extra Slope", comment: "Title of cell to set an Extra Slope")

@@ -32,6 +32,9 @@ extension LibreGlucose: GlucoseValue {
     
     public var quantity: HKQuantity {
         
+        if (defaults.object(forKey: "extraSlope") == nil) {
+            defaults.set("1.0", forKey: "extraSlope")
+        }
         let extraSlope = defaults.float(forKey: "extraSlope")
         return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose * extraSlope))
     }
