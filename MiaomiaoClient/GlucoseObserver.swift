@@ -11,11 +11,9 @@ import AudioToolbox
 import UserNotifications
 import UIKit
 
-public var snoozeTimer = 0
-
-
 public class GlucoseObserver {
     
+    public var snoozeTimer = 0
     @objc public func update() {
         
         if snoozeTimer > 0 {
@@ -28,12 +26,12 @@ public class GlucoseObserver {
     
     public func observeGlucose() {
         
-        if (glucoseValue > 90 && glucoseValue < 200 || snoozeTimer > 0) {
+        if ( (glucoseValue > 90 && glucoseValue < 200) || snoozeTimer > 0)  {
             return
             
         }
         
-        if glucoseValue < 90 {
+        else if glucoseValue < 90 {
             
             let content = UNMutableNotificationContent()
             content.title = "LOW GLUCOSE"
@@ -86,9 +84,10 @@ public class GlucoseObserver {
                 
             
         }
+        
     }
         
-        if glucoseValue > 200 {
+        else if glucoseValue > 200 {
         
             let content = UNMutableNotificationContent()
             content.title = "HIGH GLUCOSE"
