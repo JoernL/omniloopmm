@@ -39,7 +39,7 @@ extension LibreGlucose: GlucoseValue {
         let extraSlope = defaults.float(forKey: "extraSlope")
         let glucoseValue = glucose * extraSlope
         defaults.set(glucoseValue, forKey: "glucoseValue")
-        observer.observe()
+        observer.observeGlucose()
         return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose * extraSlope))
     }
 }
