@@ -9,12 +9,22 @@
 import Foundation
 import AudioToolbox
 import UserNotifications
+import UIKit
+
+public var snoozeTimer = 0
 
 
 public class GlucoseObserver {
     
+    @objc public func update() {
+        
+        if snoozeTimer > 0 {
+            snoozeTimer-=1
+        }
+    }
+    
     let glucoseValue = defaults.float(forKey: "glucoseValue")
-    public var snoozeTimer = 0
+    
     
     public func observeGlucose() {
         
@@ -61,15 +71,9 @@ public class GlucoseObserver {
             switch response.actionIdentifier {
                 case "snooze":
                     snoozeTimer = 1200
-                    var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
-                    func update() {
-                        
-                        if snoozeTimer > 0 {
-                            snoozeTimer-=1
-                        }
-                        
-                    }
-                
+                    
+                    
+                    weak var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
                 
                 default:
                 break
@@ -119,14 +123,8 @@ public class GlucoseObserver {
                 switch response.actionIdentifier {
                 case "snooze":
                     snoozeTimer = 5400
-                    var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
-                    func update() {
-                        
-                        if snoozeTimer > 0 {
-                            snoozeTimer-=1
-                        }
-                        
-                    }
+                    weak var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+                    
                     
                 default:
                     break
