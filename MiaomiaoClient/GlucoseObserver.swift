@@ -60,7 +60,7 @@ public class GlucoseObserver {
                 
             switch response.actionIdentifier {
                 case "snooze":
-                    snoozeTimer = 300
+                    snoozeTimer = 1200
                     var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
                     func update() {
                         
@@ -118,7 +118,7 @@ public class GlucoseObserver {
                 
                 switch response.actionIdentifier {
                 case "snooze":
-                    snoozeTimer = 3600
+                    snoozeTimer = 5400
                     var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
                     func update() {
                         
