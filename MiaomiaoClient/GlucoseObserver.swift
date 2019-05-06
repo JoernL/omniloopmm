@@ -38,7 +38,7 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = "snoozeCategory"
+            //content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -57,7 +57,7 @@ public class GlucoseObserver {
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: [] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-            content.categoryIdentifier = "snoozeCategory"
+            content.categoryIdentifier = "categorySnooze"
             
             let notificationCenter = UNUserNotificationCenter.current()
             
@@ -94,7 +94,7 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = "snoozeCategory"
+            //content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -113,7 +113,7 @@ public class GlucoseObserver {
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: [] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-            content.categoryIdentifier = "snoozeCategory"
+            content.categoryIdentifier = "categorySnooze"
             
             let notificationCenter = UNUserNotificationCenter.current()
             
