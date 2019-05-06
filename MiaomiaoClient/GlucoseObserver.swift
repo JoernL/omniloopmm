@@ -28,7 +28,7 @@ public class GlucoseObserver {
             content.title = "LOW GLUCOSE!"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "demoNotification"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                             content: content, trigger: trigger)
@@ -44,10 +44,10 @@ public class GlucoseObserver {
         
            
             let content = UNMutableNotificationContent()
-            content.title = "LOW GLUCOSE!"
+            content.title = "HIGH GLUCOSE!"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "demoNotification"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
