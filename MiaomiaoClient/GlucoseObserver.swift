@@ -17,7 +17,11 @@ public class GlucoseObserver {
         
         if glucoseValue < 90 {
            
-            for _ in 1...3 { AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+            
+            for _ in 1...3 {
+                               
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1000) {}
                 
         }
@@ -26,6 +30,7 @@ public class GlucoseObserver {
     }
         if glucoseValue > 200 {
             
+            NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
             for _ in 1...3 {
                 AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1000) {}
