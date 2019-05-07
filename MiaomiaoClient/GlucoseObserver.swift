@@ -9,24 +9,30 @@
 import Foundation
 import AudioToolbox
 import UserNotifications
-import UIKit
 
 public class GlucoseObserver {
     
-    public var snoozeTimer = 0
+    init() {
+        defaults.set(0, forKey: "snoozeTimer")
+    }
+    
     @objc public func update() {
         
-        if snoozeTimer > 0 {
-            snoozeTimer-=1
+        if defaults.integer(forKey: "snoozeTimer") > 0 {
+            var timer = defaults.integer(forKey: "snoozeTimer")
+            timer-=1
+            defaults.set(timer, forKey: "snoozeTimer")
         }
     }
+    
     
     let glucoseValue = defaults.float(forKey: "glucoseValue")
     
     
     public func observeGlucose() {
         
-        if ( (glucoseValue > 90 && glucoseValue < 200) || snoozeTimer > 0)  {
+        
+        if ( (glucoseValue > 90 && glucoseValue < 200) || defaults.integer(forKey: "snoozeTimer") > 0)  {
             return
             
         }
@@ -38,7 +44,7 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            //content.categoryIdentifier = "snoozeCategory"
+            content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -57,7 +63,7 @@ public class GlucoseObserver {
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: [] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-            content.categoryIdentifier = "categorySnooze"
+            //content.categoryIdentifier = "categorySnooze"
             
             let notificationCenter = UNUserNotificationCenter.current()
             
@@ -72,8 +78,7 @@ public class GlucoseObserver {
                 
             switch response.actionIdentifier {
                 case "snooze":
-                    snoozeTimer = 1200
-                    
+                    defaults.set(1200, forKey: "snoozeTimer")
                     
                     weak var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
                 
@@ -94,7 +99,7 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            //content.categoryIdentifier = "snoozeCategory"
+            content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -113,7 +118,7 @@ public class GlucoseObserver {
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: [] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-            content.categoryIdentifier = "categorySnooze"
+            //content.categoryIdentifier = "categorySnooze"
             
             let notificationCenter = UNUserNotificationCenter.current()
             
@@ -128,11 +133,9 @@ public class GlucoseObserver {
                 
                 switch response.actionIdentifier {
                 case "snooze":
-                    snoozeTimer = 5400
-                    
+                    defaults.set(5400, forKey: "snoozeTimer")
                     
                     weak var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
-                    
                 default:
                     break
                 }
