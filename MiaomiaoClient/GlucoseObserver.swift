@@ -12,9 +12,6 @@ import UserNotifications
 
 public class GlucoseObserver {
     
-    init() {
-        defaults.set(0, forKey: "snoozeTimer")
-    }
     
     @objc public func update() {
         
@@ -30,6 +27,16 @@ public class GlucoseObserver {
     
     
     public func observeGlucose() {
+        
+        var timerCheckA = defaults.integer(forKey: "snoozeTimer")
+        DispatchQueue.main.asyncAfter(deadline: .now()+3.0) {  var timerCheckB = defaults.integer(forKey: "snoozeTimer")
+            if timerCheckA > timerCheckB {
+                return
+            }
+            else {
+                defaults.set(0, forKey: "snoozeTimer")
+            }
+        }
         
         
         if ( (glucoseValue > 90 && glucoseValue < 200) || defaults.integer(forKey: "snoozeTimer") > 0)  {
