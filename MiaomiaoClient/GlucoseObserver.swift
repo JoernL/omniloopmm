@@ -13,7 +13,7 @@ import UserNotifications
 public class GlucoseObserver {
     
     
-    @objc public func update() {
+/*    @objc public func update() {
         
         if defaults.integer(forKey: "snoozeTimer") > 0 {
             var timer = defaults.integer(forKey: "snoozeTimer")
@@ -21,7 +21,7 @@ public class GlucoseObserver {
             defaults.set(timer, forKey: "snoozeTimer")
         }
     }
-    
+ */
     
     let glucoseValue = defaults.float(forKey: "glucoseValue")
     
@@ -75,8 +75,7 @@ public class GlucoseObserver {
                                                     title:"Snooze",options: UNNotificationActionOptions(rawValue: 0))
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
-                                                  intentIdentifiers: [] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-            //content.categoryIdentifier = "categorySnooze"
+                                                  intentIdentifiers: ["snooze"] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
             
             let notificationCenter = UNUserNotificationCenter.current()
             
@@ -93,7 +92,18 @@ public class GlucoseObserver {
                 case "snooze":
                     defaults.set(1200, forKey: "snoozeTimer")
                     
-                    weak var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+   /*                 let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+                    RunLoop.current.add(timer, forMode: .commonModes)
+    */
+                
+                    DispatchQueue.global(qos: .background).async {
+                        var timerCount = defaults.integer(forKey: "snoozeTimer")
+                        while (timerCount > 0) {
+                            timerCount-=1
+                            defaults.set(timerCount, forKey: "snoozeTimer")
+                            sleep(1)
+                        }
+                }
                 
                 default:
                 break
@@ -130,7 +140,7 @@ public class GlucoseObserver {
                                                     title:"Snooze",options: UNNotificationActionOptions(rawValue: 0))
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
-                                                  intentIdentifiers: [] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+                                                  intentIdentifiers: ["snooze"] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
             //content.categoryIdentifier = "categorySnooze"
             
             let notificationCenter = UNUserNotificationCenter.current()
@@ -148,8 +158,23 @@ public class GlucoseObserver {
                 case "snooze":
                     defaults.set(5400, forKey: "snoozeTimer")
                     
-                    weak var timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+   /*                 let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+                    RunLoop.current.add(timer, forMode: .commonModes)
+ 
+ */
+                    
+                    
+                    DispatchQueue.global(qos: .background).async {
+                        var timerCount = defaults.integer(forKey: "snoozeTimer")
+                        while (timerCount > 0) {
+                            timerCount-=1
+                            defaults.set(timerCount, forKey: "snoozeTimer")
+                            sleep(1)
+                        }
+                    }
+                    
                 default:
+ 
                     break
                 }
                 completionHandler()
