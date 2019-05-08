@@ -22,31 +22,24 @@ public class GlucoseObserver {
         }
     }
  */
-    
-    //let glucoseValue = defaults.float(forKey: "glucoseValue")
-    
-    
+  
     public func observeGlucose() {
         
         let glucoseValue = defaults.float(forKey: "glucoseValue")
+        if defaults.object(forKey: "snoozeTimer") == nil {
+            defaults.set(0, forKey: "snoozeTimer")
+        }
         
         if defaults.object(forKey: "snoozeTimer") != nil {
         
             let timerCheckA = defaults.integer(forKey: "snoozeTimer")
-            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in }
-            let timerCheckB = defaults.integer(forKey: "snoozeTimer")
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+              
+            let timerCheckB = defaults.integer(forKey: "snoozeTimer")
             if timerCheckA > timerCheckB {
-                return
+                    return
             }
-            else {
-                defaults.set(0, forKey: "snoozeTimer")
-            }
-          }
-        
-        else {
-                defaults.set(0, forKey: "snoozeTimer")
-        }
         
         if ( (glucoseValue > 90 && glucoseValue < 200) || defaults.integer(forKey: "snoozeTimer") > 0)  {
             return
@@ -95,11 +88,7 @@ public class GlucoseObserver {
                 case "snooze":
                     defaults.set(1200, forKey: "snoozeTimer")
                     
-   /*                 let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
-                    RunLoop.current.add(timer, forMode: .commonModes)
-    */
-                
-                    DispatchQueue.global(qos: .background).async {
+                       DispatchQueue.global(qos: .background).async {
                         var timerCount = 1200
                         while (timerCount > 0) {
                             timerCount-=1
@@ -161,13 +150,7 @@ public class GlucoseObserver {
                 case "snooze":
                     defaults.set(5400, forKey: "snoozeTimer")
                     
-   /*                 let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
-                    RunLoop.current.add(timer, forMode: .commonModes)
- 
- */
-                    
-                    
-                    DispatchQueue.global(qos: .background).async {
+                   DispatchQueue.global(qos: .background).async {
                         var timerCount = 5400
                         while (timerCount > 0) {
                             timerCount-=1
@@ -184,10 +167,9 @@ public class GlucoseObserver {
                 
                
               }
-         
-         }
+           }
+        }
      }
-  }
-
-
+   }
+}
 
