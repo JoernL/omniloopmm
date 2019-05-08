@@ -10,20 +10,25 @@ import Foundation
 import AudioToolbox
 import UserNotifications
 
+var timer: Timer?
+
 public class GlucoseObserver {
     
     
-/*    @objc public func update() {
+    @objc public func update() {
         
-        if defaults.integer(forKey: "snoozeTimer") > 0 {
-            var timer = defaults.integer(forKey: "snoozeTimer")
-            timer-=1
-            defaults.set(timer, forKey: "snoozeTimer")
+            var timeLeft = defaults.integer(forKey: "snoozeTimer")
+            timeLeft-=1
+            defaults.set(timeLeft, forKey: "snoozeTimer")
+        if timeLeft <= 0 {
+            timer?.invalidate()
+            timer = nil
         }
     }
- */
+ 
   
     public func observeGlucose() {
+        
         
         let glucoseValue = defaults.float(forKey: "glucoseValue")
         if defaults.object(forKey: "snoozeTimer") == nil {
@@ -86,14 +91,7 @@ public class GlucoseObserver {
                 case "snooze":
                     defaults.set(1200, forKey: "snoozeTimer")
                     
-                       DispatchQueue.global(qos: .background).async {
-                        var timerCount = 1200
-                        while (timerCount > 0) {
-                            timerCount-=1
-                            defaults.set(timerCount, forKey: "snoozeTimer")
-                            sleep(1)
-                        }
-                }
+                    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
                 
                 default:
                 break
@@ -161,7 +159,7 @@ public class GlucoseObserver {
  
                     break
                 }
-                //completionHandler()
+                completionHandler()
                 
                
               }
