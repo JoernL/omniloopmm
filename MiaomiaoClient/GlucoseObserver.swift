@@ -23,16 +23,19 @@ public class GlucoseObserver {
     }
  */
     
-    let glucoseValue = defaults.float(forKey: "glucoseValue")
+    //let glucoseValue = defaults.float(forKey: "glucoseValue")
     
     
     public func observeGlucose() {
         
+        let glucoseValue = defaults.float(forKey: "glucoseValue")
         
         if defaults.object(forKey: "snoozeTimer") != nil {
         
-            var timerCheckA = defaults.integer(forKey: "snoozeTimer")
-                DispatchQueue.main.asyncAfter(deadline: .now()+3.0) {  var timerCheckB = defaults.integer(forKey: "snoozeTimer")
+            let timerCheckA = defaults.integer(forKey: "snoozeTimer")
+            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in }
+            let timerCheckB = defaults.integer(forKey: "snoozeTimer")
+            
             if timerCheckA > timerCheckB {
                 return
             }
@@ -40,7 +43,7 @@ public class GlucoseObserver {
                 defaults.set(0, forKey: "snoozeTimer")
             }
           }
-        }
+        
         else {
                 defaults.set(0, forKey: "snoozeTimer")
         }
@@ -97,7 +100,7 @@ public class GlucoseObserver {
     */
                 
                     DispatchQueue.global(qos: .background).async {
-                        var timerCount = defaults.integer(forKey: "snoozeTimer")
+                        var timerCount = 1200
                         while (timerCount > 0) {
                             timerCount-=1
                             defaults.set(timerCount, forKey: "snoozeTimer")
@@ -141,7 +144,7 @@ public class GlucoseObserver {
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: ["snooze"] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
-            //content.categoryIdentifier = "categorySnooze"
+            
             
             let notificationCenter = UNUserNotificationCenter.current()
             
@@ -165,7 +168,7 @@ public class GlucoseObserver {
                     
                     
                     DispatchQueue.global(qos: .background).async {
-                        var timerCount = defaults.integer(forKey: "snoozeTimer")
+                        var timerCount = 5400
                         while (timerCount > 0) {
                             timerCount-=1
                             defaults.set(timerCount, forKey: "snoozeTimer")
