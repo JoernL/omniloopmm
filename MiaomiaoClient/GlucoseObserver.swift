@@ -30,8 +30,6 @@ public class GlucoseObserver {
             defaults.set(0, forKey: "snoozeTimer")
         }
         
-        if defaults.object(forKey: "snoozeTimer") != nil {
-        
             let timerCheckA = defaults.integer(forKey: "snoozeTimer")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -100,7 +98,7 @@ public class GlucoseObserver {
                 default:
                 break
                 }
-                    completionHandler()
+                    //completionHandler()
                 
             
         }
@@ -163,7 +161,7 @@ public class GlucoseObserver {
  
                     break
                 }
-                completionHandler()
+                //completionHandler()
                 
                
               }
@@ -171,5 +169,5 @@ public class GlucoseObserver {
         }
      }
    }
-}
+
 
