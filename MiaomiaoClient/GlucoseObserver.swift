@@ -152,6 +152,8 @@ public class GlucoseObserver {
                 
                 switch response.actionIdentifier {
                 case "snooze":
+                    
+                    NSLog("joernl:: high timer1 up")
                     defaults.set(5400, forKey: "snoozeTimer")
                     
                    DispatchQueue.global(qos: .background).async {
@@ -161,7 +163,7 @@ public class GlucoseObserver {
                             defaults.set(timerCount, forKey: "snoozeTimer")
                             sleep(1)
                             
-                            NSLog("joernl:: high timer up")
+                            NSLog("joernl:: high2 timer up")
                            
                             }
                     
