@@ -121,7 +121,7 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             //content.badge = 0
-            //content.categoryIdentifier = "snoozeCategory"
+            content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -136,15 +136,15 @@ public class GlucoseObserver {
             
             let notificationCenter = UNUserNotificationCenter.current()
             let snoozeAction = UNNotificationAction(identifier:"snooze",
-                                                    title:"Snooze",options: UNNotificationActionOptions())
-            /*let category = UNNotificationCategory(identifier: "snoozeCategory",
+                                                    title:"Snooze",options: UNNotificationActionOptions(rawValue: 0) )
+            let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
-                                                  intentIdentifiers: [] ,options: [])
-            */
+                                                  intentIdentifiers: ["snooze"] ,options: [.customDismissAction ])
             
             
-            //notificationCenter.setNotificationCategories([category])
-            //notificationCenter.add(request, withCompletionHandler: nil)
+            
+            notificationCenter.setNotificationCategories([category])
+            notificationCenter.add(request, withCompletionHandler: nil)
            
             
             func userNotificationCenter(_ center: UNUserNotificationCenter,
