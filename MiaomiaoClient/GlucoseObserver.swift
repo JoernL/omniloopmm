@@ -74,36 +74,38 @@ public class GlucoseObserver {
             
             
             let snoozeAction = UNNotificationAction(identifier:"snooze",
-                                                    title:"Snooze",options: UNNotificationActionOptions(rawValue: 0))
+                                                    title:"Snooze",options: UNNotificationActionOptions())
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
-                                                  intentIdentifiers: ["snooze"] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+                                                  intentIdentifiers: [], options: [])
             
             let notificationCenter = UNUserNotificationCenter.current()
-            
             notificationCenter.setNotificationCategories([category])
-            
+            notificationCenter.add(request, withCompletionHandler: nil)
             
             func userNotificationCenter(_ center: UNUserNotificationCenter,
             didReceive response: UNNotificationResponse,
             withCompletionHandler completionHandler:
             @escaping () -> Void) {
                 
-                if response.notification.request.content.categoryIdentifier == "snoozeCategory" {
-                
             switch response.actionIdentifier {
                 case "snooze":
                     defaults.set(1200, forKey: "snoozeTimer")
                     
                     timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-                
+                    
+                    
+                    break
                 default:
-                break
-                }
-                    completionHandler()
-                }
+                    
+                        completionHandler()
+                    break
+                
+                
+                
                 
             
+            }
         }
         
     }
@@ -130,15 +132,15 @@ public class GlucoseObserver {
             
             
             let snoozeAction = UNNotificationAction(identifier:"snooze",
-                                                    title:"Snooze",options: UNNotificationActionOptions(rawValue: 0))
+                                                    title:"Snooze",options: UNNotificationActionOptions())
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
-                                                  intentIdentifiers: ["snooze"] ,hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
+                                                  intentIdentifiers: [] ,options: [])
             
             
             let notificationCenter = UNUserNotificationCenter.current()
-            
             notificationCenter.setNotificationCategories([category])
+            notificationCenter.add(request, withCompletionHandler: nil)
             
             
             func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -147,7 +149,7 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                if response.notification.request.content.categoryIdentifier == "snoozeCategory" {
+                
                 switch response.actionIdentifier {
                 case "snooze":
                     defaults.set(5400, forKey: "snoozeTimer")
@@ -160,8 +162,13 @@ public class GlucoseObserver {
                             sleep(1)
                             
                             NSLog("joernl:: high timer up")
-                        }
+                           
+                            }
+                    
+                            completionHandler()
+                    
                     }
+                    break
                     
                 default:
  
@@ -169,7 +176,7 @@ public class GlucoseObserver {
                 }
                 completionHandler()
                 
-                }
+                
               }
            }
         }
