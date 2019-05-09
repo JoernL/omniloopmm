@@ -20,10 +20,13 @@ public class GlucoseObserver {
             var timeLeft = defaults.integer(forKey: "snoozeTimer")
             timeLeft-=1
             defaults.set(timeLeft, forKey: "snoozeTimer")
-        if timeLeft <= 0 {
-            timer?.invalidate()
-            timer = nil
-        }
+            if timeLeft <= 0 {
+               timer?.invalidate()
+               timer = nil
+            }
+        
+            NSLog("joernl:: low timer up")
+        
     }
  
   
@@ -41,11 +44,11 @@ public class GlucoseObserver {
               
             let timerCheckB = defaults.integer(forKey: "snoozeTimer")
             if timerCheckA > timerCheckB {
-                    return
+                return
             }
         
-        if ( (glucoseValue > 90 && glucoseValue < 200) || defaults.integer(forKey: "snoozeTimer") > 0)  {
-            return
+        if ( (glucoseValue > 90 && glucoseValue < 200) ||  defaults.integer(forKey: "snoozeTimer") > 0)  {
+                return
             
         }
         
@@ -152,6 +155,8 @@ public class GlucoseObserver {
                             timerCount-=1
                             defaults.set(timerCount, forKey: "snoozeTimer")
                             sleep(1)
+                            
+                            NSLog("joernl:: high timer up")
                         }
                     }
                     
