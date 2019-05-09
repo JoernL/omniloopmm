@@ -88,7 +88,8 @@ public class GlucoseObserver {
             didReceive response: UNNotificationResponse,
             withCompletionHandler completionHandler:
             @escaping () -> Void) {
-                                                    
+                
+                if response.notification.request.content.categoryIdentifier == "snoozeCategory" {
                 
             switch response.actionIdentifier {
                 case "snooze":
@@ -99,7 +100,8 @@ public class GlucoseObserver {
                 default:
                 break
                 }
-                    //completionHandler()
+                    completionHandler()
+                }
                 
             
         }
@@ -145,6 +147,7 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
+                if response.notification.request.content.categoryIdentifier == "snoozeCategory" {
                 switch response.actionIdentifier {
                 case "snooze":
                     defaults.set(5400, forKey: "snoozeTimer")
@@ -166,7 +169,7 @@ public class GlucoseObserver {
                 }
                 completionHandler()
                 
-               
+                }
               }
            }
         }
