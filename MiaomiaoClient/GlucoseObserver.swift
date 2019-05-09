@@ -9,13 +9,10 @@
 import Foundation
 import AudioToolbox
 import UserNotifications
-import UIKit
-
-
 
 var timer: Timer?
 
-public class GlucoseObserver: UIResponder, UIApplicationDelegate{
+public class GlucoseObserver {
     
     
     @objc public func update() {
@@ -123,8 +120,8 @@ public class GlucoseObserver: UIResponder, UIApplicationDelegate{
             content.title = "HIGH GLUCOSE"
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
-            content.badge = 0
-            content.categoryIdentifier = "snoozeCategory"
+            //content.badge = 0
+            //content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -137,18 +134,17 @@ public class GlucoseObserver: UIResponder, UIApplicationDelegate{
                                                     
             })
             
-            
+            let notificationCenter = UNUserNotificationCenter.current()
             let snoozeAction = UNNotificationAction(identifier:"snooze",
                                                     title:"Snooze",options: UNNotificationActionOptions())
-            let category = UNNotificationCategory(identifier: "snoozeCategory",
+            /*let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: [] ,options: [])
+            */
             
             
-            let notificationCenter = UNUserNotificationCenter.current()
-            
-            notificationCenter.setNotificationCategories([category])
-            notificationCenter.add(request, withCompletionHandler: nil)
+            //notificationCenter.setNotificationCategories([category])
+            //notificationCenter.add(request, withCompletionHandler: nil)
            
             
             func userNotificationCenter(_ center: UNUserNotificationCenter,
