@@ -9,10 +9,13 @@
 import Foundation
 import AudioToolbox
 import UserNotifications
+import UIKit
+
+
 
 var timer: Timer?
 
-public class GlucoseObserver {
+public class GlucoseObserver: UIResponder, UIApplicationDelegate{
     
     
     @objc public func update() {
@@ -30,6 +33,8 @@ public class GlucoseObserver {
     }
  
   
+    
+    
     public func observeGlucose() {
         
         
@@ -112,6 +117,8 @@ public class GlucoseObserver {
         
         else if glucoseValue > 200 {
         
+            
+            
             let content = UNMutableNotificationContent()
             content.title = "HIGH GLUCOSE"
             content.body = "Push for snooze option"
@@ -139,9 +146,10 @@ public class GlucoseObserver {
             
             
             let notificationCenter = UNUserNotificationCenter.current()
+            
             notificationCenter.setNotificationCategories([category])
             notificationCenter.add(request, withCompletionHandler: nil)
-            
+           
             
             func userNotificationCenter(_ center: UNUserNotificationCenter,
                                         didReceive response: UNNotificationResponse,
@@ -149,9 +157,9 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                
-                switch response.actionIdentifier {
-                case "snooze":
+                if response.actionIdentifier == "snooze" {
+                    
+                    print("joernl:: high timer1 up")
                     
                     NSLog("joernl:: high timer1 up")
                     defaults.set(5400, forKey: "snoozeTimer")
@@ -164,25 +172,19 @@ public class GlucoseObserver {
                             sleep(1)
                             
                             NSLog("joernl:: high2 timer up")
-                           
                             }
+                        }
                     
                             completionHandler()
-                    
-                    }
-                    break
-                    
-                default:
- 
-                    break
+                   
+               
                 }
-                completionHandler()
-                
-                
-              }
-           }
-        }
-     }
+            
+             }
+          }
+       }
    }
+}
+
 
 
