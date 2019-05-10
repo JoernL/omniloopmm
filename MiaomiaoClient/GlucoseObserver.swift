@@ -118,9 +118,10 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
+            content.categoryIdentifier = LoopNotificationCategory.bolusFailure.rawValue
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let requestIdentifier = "snoozeNotification"
+            let requestIdentifier = LoopNotificationCategory.bolusFailure.rawValue
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
             
