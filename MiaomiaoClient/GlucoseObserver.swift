@@ -9,11 +9,16 @@
 import Foundation
 import AudioToolbox
 import UserNotifications
+import LoopKit
+
 
 var timer: Timer?
 
 public class GlucoseObserver {
     
+    enum Action: String {
+        case retryBolus
+    }
     
     @objc public func update() {
         
@@ -142,11 +147,12 @@ public class GlucoseObserver {
             
             var notificationCategories: Set<UNNotificationCategory> {
                 var categories = [UNNotificationCategory]()
-                let snoozeAction = UNNotificationAction(identifier:"snooze",
-                                                    title:"Snooze",options: [])
+                
+                let snoozeAction = UNNotificationAction(identifier: Action.retryBolus.rawValue,
+                                                    title:"Snooze", options: [])
             
             
-                categories.append(UNNotificationCategory(identifier: "snoozeCategory", actions: [snoozeAction], intentIdentifiers: [], options: []))
+                categories.append(UNNotificationCategory(identifier: LoopNotificationCategory.bolusFailure.rawValue, actions: [snoozeAction], intentIdentifiers: [], options: []))
                 
                 return Set(categories)
             }
@@ -162,7 +168,7 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                if response.actionIdentifier == "snooze" {
+                if response.actionIdentifier == Action.retryBolus.rawValue {
                     
                     print("joernl:: high timer1 up")
                     
