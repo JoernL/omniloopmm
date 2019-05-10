@@ -121,7 +121,6 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "snoozeNotification"
@@ -134,22 +133,26 @@ public class GlucoseObserver {
                                                     
             })
             
-            weak var delegate: UNUserNotificationCenterDelegate?
             
             
             let notificationCenter = UNUserNotificationCenter.current()
-            //notificationCenter.delegate = delegate
+            
             notificationCenter.requestAuthorization(options: [.badge, .sound, .alert], completionHandler:{ _, _ in })
             
             
-            let snoozeAction = UNNotificationAction(identifier:"snooze",
+            var notificationCategories: Set<UNNotificationCategory> {
+                var categories = [UNNotificationCategory]()
+                let snoozeAction = UNNotificationAction(identifier:"snooze",
                                                     title:"Snooze",options: [])
-            let category = UNNotificationCategory(identifier: "snoozeCategory",
-                                                  actions: [snoozeAction],
-                                                  intentIdentifiers: [] ,options: [])
             
             
-            notificationCenter.setNotificationCategories([category])
+                categories.append(UNNotificationCategory(identifier: "snoozeCategory", actions: [snoozeAction], intentIdentifiers: [], options: []))
+                
+                return Set(categories)
+            }
+            
+            
+            notificationCenter.setNotificationCategories(notificationCategories)
             notificationCenter.add(request, withCompletionHandler: nil)
            
             
