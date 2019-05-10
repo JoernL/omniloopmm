@@ -120,7 +120,7 @@ public class GlucoseObserver {
             content.title = "HIGH GLUCOSE"
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
-            //content.badge = 0
+            content.badge = 0
             content.categoryIdentifier = "snoozeCategory"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -134,13 +134,19 @@ public class GlucoseObserver {
                                                     
             })
             
+            weak var delegate: UNUserNotificationCenterDelegate?
+            
+            
             let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.delegate = delegate
+            notificationCenter.requestAuthorization(options: [.badge, .sound, .alert], completionHandler:{ _, _ in })
+            
+            
             let snoozeAction = UNNotificationAction(identifier:"snooze",
-                                                    title:"Snooze",options: UNNotificationActionOptions(rawValue: 0) )
+                                                    title:"Snooze",options: [])
             let category = UNNotificationCategory(identifier: "snoozeCategory",
                                                   actions: [snoozeAction],
-                                                  intentIdentifiers: ["snooze"] ,options: [.customDismissAction ])
-            
+                                                  intentIdentifiers: [] ,options: [])
             
             
             notificationCenter.setNotificationCategories([category])
