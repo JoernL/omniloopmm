@@ -145,7 +145,7 @@ public class GlucoseObserver {
             notificationCenter.requestAuthorization(options: [.badge, .sound, .alert], completionHandler:{ _, _ in })
             
             
-            var notificationCategories: Set<UNNotificationCategory> {
+            /*var notificationCategories: Set<UNNotificationCategory> {
                 var categories = [UNNotificationCategory]()
                 
                 let snoozeAction = UNNotificationAction(identifier: Action.retryBolus.rawValue,
@@ -156,9 +156,14 @@ public class GlucoseObserver {
                 
                 return Set(categories)
             }
+            */
+                let snoozeAction = UNNotificationAction(identifier:Action.retryBolus.rawValue,
+                                                        title:"Snooze",options: UNNotificationActionOptions())
             
-            
-            notificationCenter.setNotificationCategories(notificationCategories)
+                let category = UNNotificationCategory(identifier:  LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
+                                                  intentIdentifiers: [], options: [])
+                notificationCenter.setNotificationCategories([category])
+                
             notificationCenter.add(request, withCompletionHandler: nil)
            
             
