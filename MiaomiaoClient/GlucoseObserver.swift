@@ -34,9 +34,6 @@ public class GlucoseObserver {
         
     }
  
-  
-    
-    
     public func observeGlucose() {
         
         
@@ -107,21 +104,16 @@ public class GlucoseObserver {
                     
                         completionHandler()
                     break
-                
-                
-                
-                
-            
+        
             }
         }
         
     }
         
         else if glucoseValue > 200 {
-        
-            
-            
+           
             let content = UNMutableNotificationContent()
+            let notificationCenter = UNUserNotificationCenter.current()
             content.title = "HIGH GLUCOSE"
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
@@ -132,37 +124,17 @@ public class GlucoseObserver {
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
             
-            UNUserNotificationCenter.current().add(request,
+            notificationCenter.add(request,
                                                    withCompletionHandler: { (error) in
-                                                    // Handle
                                                     
             })
-            
-            
-            
-            let notificationCenter = UNUserNotificationCenter.current()
-            
-            notificationCenter.requestAuthorization(options: [.badge, .sound, .alert], completionHandler:{ _, _ in })
-            
-            
-            /*var notificationCategories: Set<UNNotificationCategory> {
-                var categories = [UNNotificationCategory]()
-                
-                let snoozeAction = UNNotificationAction(identifier: Action.retryBolus.rawValue,
-                                                    title:"Snooze", options: [])
-            
-            
-                categories.append(UNNotificationCategory(identifier: LoopNotificationCategory.bolusFailure.rawValue, actions: [snoozeAction], intentIdentifiers: [], options: []))
-                
-                return Set(categories)
-            }
-            */
-                let snoozeAction = UNNotificationAction(identifier:Action.retryBolus.rawValue,
+           
+            let snoozeAction = UNNotificationAction(identifier:Action.retryBolus.rawValue,
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
-                let category = UNNotificationCategory(identifier:  LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
+            let category = UNNotificationCategory(identifier:  LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
-                notificationCenter.setNotificationCategories([category])
+            notificationCenter.setNotificationCategories([category])
                 
             notificationCenter.add(request, withCompletionHandler: nil)
            
