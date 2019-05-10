@@ -129,7 +129,7 @@ public class GlucoseObserver {
                                                     
             })
            
-            let snoozeAction = UNNotificationAction(identifier:Action.retryBolus.rawValue,
+            let snoozeAction = UNNotificationAction(identifier:"snooze",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
             let category = UNNotificationCategory(identifier:  LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
@@ -145,7 +145,7 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                if response.actionIdentifier == Action.retryBolus.rawValue {
+                if response.actionIdentifier == "snooze" {
                     
                     print("joernl:: high timer1 up")
                     
