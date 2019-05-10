@@ -138,7 +138,7 @@ public class GlucoseObserver {
             
             
             let notificationCenter = UNUserNotificationCenter.current()
-            notificationCenter.delegate = delegate
+            //notificationCenter.delegate = delegate
             notificationCenter.requestAuthorization(options: [.badge, .sound, .alert], completionHandler:{ _, _ in })
             
             
