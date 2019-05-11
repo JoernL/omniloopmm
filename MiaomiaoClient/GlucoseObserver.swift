@@ -34,6 +34,8 @@ public class GlucoseObserver {
         
     }
  
+    
+    
     public func observeGlucose() {
         
         
@@ -119,9 +121,16 @@ public class GlucoseObserver {
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
             content.categoryIdentifier = "alarm.category"
-            notificationCenter.requestAuthorization(
-                options: [.alert,.sound,.badge],
-                completionHandler: { (granted,error) in })
+            
+            
+            func authorize(delegate: UNUserNotificationCenterDelegate) {
+                let center = UNUserNotificationCenter.current()
+                
+                center.delegate = delegate
+                center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { _, _ in })
+                
+            }
+           
             
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -144,7 +153,7 @@ public class GlucoseObserver {
             let snoozeAction = UNNotificationAction(identifier: "snooze",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
-            let category = UNNotificationCategory(identifier:"alarm.category",                                                actions: [snoozeAction],
+            let category = UNNotificationCategory(identifier: LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
             notificationCenter.setNotificationCategories([category])
                 

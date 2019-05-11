@@ -47,7 +47,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 withCompletionHandler completionHandler:
         @escaping () -> Void) {
         
+        if response.actionIdentifier == "snooze" {
+            
+            print("joernl:: high timer3 up")
+            
+            NSLog("joernl:: high timer4 up")
+            //       defaults.set(5400, forKey: "snoozeTimer")
+            
+            //        DispatchQueue.global(qos: .background).async {
+            //             var timerCount = 5400
+            //             while (timerCount > 0) {
+            //                 timerCount-=1
+            //                 defaults.set(timerCount, forKey: "snoozeTimer")
+            //                 sleep(1)
+            
+            //                 NSLog("joernl:: high2 timer up")
+            
+        }
+        completionHandler()
     }
-
 }
 
