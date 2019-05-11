@@ -118,14 +118,14 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = LoopNotificationCategory.bolusFailure.rawValue
+            content.categoryIdentifier = "alarm.category"
             notificationCenter.requestAuthorization(
                 options: [.alert,.sound,.badge],
                 completionHandler: { (granted,error) in })
             
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let requestIdentifier = "alarm" //LoopNotificationCategory.bolusFailure.rawValue
+            let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
             
@@ -134,10 +134,17 @@ public class GlucoseObserver {
                                                     
             })
            
-            let snoozeAction = UNNotificationAction(identifier:Action.retryBolus.rawValue,
+                        
+            // MARK: - Delegates
+            func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+                completionHandler([.alert,.sound])
+            }
+            
+            
+            let snoozeAction = UNNotificationAction(identifier: "snooze",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
-            let category = UNNotificationCategory(identifier:LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
+            let category = UNNotificationCategory(identifier:"alarm.category",                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
             notificationCenter.setNotificationCategories([category])
                 
@@ -150,25 +157,27 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                if response.actionIdentifier == Action.retryBolus.rawValue {
+                if response.actionIdentifier == "snooze" {
                     
                     print("joernl:: high timer1 up")
                     
                     NSLog("joernl:: high timer1 up")
-                    defaults.set(5400, forKey: "snoozeTimer")
+           //       defaults.set(5400, forKey: "snoozeTimer")
                     
-                   DispatchQueue.global(qos: .background).async {
-                        var timerCount = 5400
-                        while (timerCount > 0) {
-                            timerCount-=1
-                            defaults.set(timerCount, forKey: "snoozeTimer")
-                            sleep(1)
+           //        DispatchQueue.global(qos: .background).async {
+           //             var timerCount = 5400
+           //             while (timerCount > 0) {
+           //                 timerCount-=1
+           //                 defaults.set(timerCount, forKey: "snoozeTimer")
+           //                 sleep(1)
                             
-                            NSLog("joernl:: high2 timer up")
+           //                 NSLog("joernl:: high2 timer up")
+ 
                             }
+                                completionHandler()
                         }
                     
-                            completionHandler()
+            
                    
                
                 }
@@ -176,8 +185,8 @@ public class GlucoseObserver {
              }
           }
        }
-   }
-}
+
+
 
 
 

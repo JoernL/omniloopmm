@@ -42,6 +42,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, Comple
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        UNUserNotificationCenter.current().delegate = self
+        
         title = cgmManager?.localizedTitle
 
         tableView.rowHeight = UITableViewAutomaticDimension
