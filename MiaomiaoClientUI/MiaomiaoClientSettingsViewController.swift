@@ -14,7 +14,7 @@ import UserNotifications
 
 let defaults = UserDefaults.standard
 
-public class MiaomiaoClientSettingsViewController: UITableViewController, CompletionNotifying {
+public class MiaomiaoClientSettingsViewController: UITableViewController, UNUserNotificationCenterDelegate, CompletionNotifying {
     public var completionDelegate: CompletionDelegate?
     
     private let isDemoMode = false
