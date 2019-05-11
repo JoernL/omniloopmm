@@ -10,6 +10,7 @@ import HealthKit
 import LoopKit
 import LoopKitUI
 import MiaomiaoClient
+import UserNotifications
 
 let defaults = UserDefaults.standard
 
