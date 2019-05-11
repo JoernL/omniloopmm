@@ -118,10 +118,15 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = "snooze"
+            content.categoryIdentifier = "alarm.category"
+            
+            notificationCenter.requestAuthorization(
+                options: [.alert,.sound,.badge],
+                completionHandler: { (granted,error) in })
+            
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let requestIdentifier = LoopNotificationCategory.bolusFailure.rawValue
+            let requestIdentifier = "alarm" //LoopNotificationCategory.bolusFailure.rawValue
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
             
@@ -130,10 +135,10 @@ public class GlucoseObserver {
                                                     
             })
            
-            let snoozeAction = UNNotificationAction(identifier:"snoozeAction",
+            let snoozeAction = UNNotificationAction(identifier:"snooze",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
-            let category = UNNotificationCategory(identifier:  "snooze",                                                actions: [snoozeAction],
+            let category = UNNotificationCategory(identifier:  "alarm.category",                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
             notificationCenter.setNotificationCategories([category])
                 
@@ -146,7 +151,7 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                if response.actionIdentifier == "snoozeAction" {
+                if response.actionIdentifier == "snooze" {
                     
                     print("joernl:: high timer1 up")
                     
