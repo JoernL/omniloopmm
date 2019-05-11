@@ -11,31 +11,9 @@ import AudioToolbox
 import UserNotifications
 import LoopKit
 
-
-var timer: Timer?
-
 public class GlucoseObserver {
     
-    enum Action: String {
-        case retryBolus
-    }
-    
-    @objc public func update() {
-        
-            var timeLeft = defaults.integer(forKey: "snoozeTimer")
-            timeLeft-=1
-            defaults.set(timeLeft, forKey: "snoozeTimer")
-            if timeLeft <= 0 {
-               timer?.invalidate()
-               timer = nil
-            }
-        
-            NSLog("joernl:: low timer up")
-        
-    }
- 
-    
-    
+   
     public func observeGlucose() {
         
         
@@ -61,55 +39,32 @@ public class GlucoseObserver {
         else if glucoseValue < 90 {
             
             let content = UNMutableNotificationContent()
+            let notificationCenter = UNUserNotificationCenter.current()
             content.title = "LOW GLUCOSE"
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = "snoozeCategory"
+            content.categoryIdentifier = "alarm.category"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-            let requestIdentifier = "snoozeNotification"
+            let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                             content: content, trigger: trigger)
             
-            UNUserNotificationCenter.current().add(request,
+            notificationCenter.add(request,
                                                    withCompletionHandler: { (error) in
-                                                    // Handle
                                                     
             })
             
-            
-            let snoozeAction = UNNotificationAction(identifier:"snooze",
-                                                    title:"Snooze",options: UNNotificationActionOptions())
-            let category = UNNotificationCategory(identifier: "snoozeCategory",
+            let snoozeAction = UNNotificationAction(identifier:"snooze20",
+                                                    title:"Snooze 20min",options: UNNotificationActionOptions())
+            let category = UNNotificationCategory(identifier: "alarm.category",
                                                   actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
             
-            let notificationCenter = UNUserNotificationCenter.current()
             notificationCenter.setNotificationCategories([category])
             notificationCenter.add(request, withCompletionHandler: nil)
             
-            func userNotificationCenter(_ center: UNUserNotificationCenter,
-            didReceive response: UNNotificationResponse,
-            withCompletionHandler completionHandler:
-            @escaping () -> Void) {
-                
-            switch response.actionIdentifier {
-                case "snooze":
-                    defaults.set(1200, forKey: "snoozeTimer")
-                    
-                    timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-                    
-                    
-                    break
-                default:
-                    
-                        completionHandler()
-                    break
-        
-            }
-        }
-        
     }
         
         else if glucoseValue > 200 {
@@ -121,18 +76,7 @@ public class GlucoseObserver {
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
             content.categoryIdentifier = "alarm.category"
-            
-            
-            func authorize(delegate: UNUserNotificationCenterDelegate) {
-                let center = UNUserNotificationCenter.current()
-                
-                center.delegate = delegate
-                center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { _, _ in })
-                
-            }
            
-            
-            
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
@@ -143,55 +87,17 @@ public class GlucoseObserver {
                                                     
             })
                        
-            let snoozeAction = UNNotificationAction(identifier: "snooze",
-                                                        title:"Snooze",options: UNNotificationActionOptions())
+            let snoozeAction = UNNotificationAction(identifier: "snooze90",
+                                                        title:"Snooze 90min",options: UNNotificationActionOptions())
             
             let category = UNNotificationCategory(identifier: "alarm.category",                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
+            
             notificationCenter.setNotificationCategories([category])
-                
             notificationCenter.add(request, withCompletionHandler: nil)
+            
+           }
            
-   /*         print("joernl:: high timer1 up")
-            
-            NSLog("joernl:: high timer2 up")
-            
-           func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                        didReceive response: UNNotificationResponse,
-                                        withCompletionHandler completionHandler:
-                @escaping () -> Void) {
-                
-                
-                if response.actionIdentifier == "snooze" {
-                    
-                    print("joernl:: high timer3 up")
-                    
-                    NSLog("joernl:: high timer4 up")
-           //       defaults.set(5400, forKey: "snoozeTimer")
-                    
-           //        DispatchQueue.global(qos: .background).async {
-           //             var timerCount = 5400
-           //             while (timerCount > 0) {
-           //                 timerCount-=1
-           //                 defaults.set(timerCount, forKey: "snoozeTimer")
-           //                 sleep(1)
-                            
-           //                 NSLog("joernl:: high2 timer up")
- 
-                            }
-                                completionHandler()
-                        }
-                    
-      */
-                   
-               
-                }
-            
-             }
-          }
-       }
-
-
-
-
-
+        }
+    }
+}
