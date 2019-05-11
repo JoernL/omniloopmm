@@ -22,19 +22,16 @@ public class GlucoseObserver {
             defaults.set(0, forKey: "snoozeTimer")
         }
         
-            let timerCheckA = defaults.integer(forKey: "snoozeTimer")
-            print("A ")
-            print(timerCheckA)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-              
+        let timerCheckA = defaults.integer(forKey: "snoozeTimer")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             let timerCheckB = defaults.integer(forKey: "snoozeTimer")
-                print("B ")
-                print(timerCheckB)
             if timerCheckA > timerCheckB {
-                return
+            return
             }
-        
-        if ( (glucoseValue > 90 && glucoseValue < 200) ||  defaults.integer(forKey: "snoozeTimer") > 0)  {
+        }
+        defaults.set(0, forKey: "snoozeTimer")
+                
+        if (glucoseValue > 90 && glucoseValue < 200)  {
                 return
             
         }
@@ -68,7 +65,7 @@ public class GlucoseObserver {
             notificationCenter.setNotificationCategories([category])
             notificationCenter.add(request, withCompletionHandler: nil)
             
-    }
+        }
         
         else if glucoseValue > 200 {
            
@@ -99,8 +96,6 @@ public class GlucoseObserver {
             notificationCenter.setNotificationCategories([category])
             notificationCenter.add(request, withCompletionHandler: nil)
             
-           }
-           
-        }
-    }
+      }
+   }
 }
