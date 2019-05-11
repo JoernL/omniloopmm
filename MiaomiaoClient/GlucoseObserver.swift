@@ -118,7 +118,7 @@ public class GlucoseObserver {
             content.body = "Push for snooze option"
             content.sound = UNNotificationSound.defaultCritical
             content.badge = 0
-            content.categoryIdentifier = LoopNotificationCategory.bolusFailure.rawValue
+            content.categoryIdentifier = "snooze"
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
             let requestIdentifier = LoopNotificationCategory.bolusFailure.rawValue
@@ -130,10 +130,10 @@ public class GlucoseObserver {
                                                     
             })
            
-            let snoozeAction = UNNotificationAction(identifier:"snooze",
+            let snoozeAction = UNNotificationAction(identifier:"snoozeAction",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
-            let category = UNNotificationCategory(identifier:  LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
+            let category = UNNotificationCategory(identifier:  "snooze",                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
             notificationCenter.setNotificationCategories([category])
                 
@@ -146,7 +146,7 @@ public class GlucoseObserver {
                 @escaping () -> Void) {
                 
                 
-                if response.actionIdentifier == "snooze" {
+                if response.actionIdentifier == "snoozeAction" {
                     
                     print("joernl:: high timer1 up")
                     
