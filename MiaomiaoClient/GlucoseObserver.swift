@@ -23,10 +23,12 @@ public class GlucoseObserver {
         }
         
             let timerCheckA = defaults.integer(forKey: "snoozeTimer")
+            print("A ")
             print(timerCheckA)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
               
             let timerCheckB = defaults.integer(forKey: "snoozeTimer")
+                print("B ")
                 print(timerCheckB)
             if timerCheckA > timerCheckB {
                 return
