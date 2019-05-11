@@ -150,6 +150,9 @@ public class GlucoseObserver {
                 
             notificationCenter.add(request, withCompletionHandler: nil)
            
+            print("joernl:: high timer1 up")
+            
+            NSLog("joernl:: high timer2 up")
             
             func userNotificationCenter(_ center: UNUserNotificationCenter,
                                         didReceive response: UNNotificationResponse,
@@ -159,9 +162,9 @@ public class GlucoseObserver {
                 
                 if response.actionIdentifier == "snooze" {
                     
-                    print("joernl:: high timer1 up")
+                    print("joernl:: high timer3 up")
                     
-                    NSLog("joernl:: high timer1 up")
+                    NSLog("joernl:: high timer4 up")
            //       defaults.set(5400, forKey: "snoozeTimer")
                     
            //        DispatchQueue.global(qos: .background).async {
