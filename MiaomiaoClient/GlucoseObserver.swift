@@ -153,7 +153,7 @@ public class GlucoseObserver {
             let snoozeAction = UNNotificationAction(identifier: "snooze",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
-            let category = UNNotificationCategory(identifier: LoopNotificationCategory.bolusFailure.rawValue,                                                actions: [snoozeAction],
+            let category = UNNotificationCategory(identifier: "alarm.category",                                                actions: [snoozeAction],
                                                   intentIdentifiers: [], options: [])
             notificationCenter.setNotificationCategories([category])
                 
