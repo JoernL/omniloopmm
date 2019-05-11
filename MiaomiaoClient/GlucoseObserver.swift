@@ -142,14 +142,7 @@ public class GlucoseObserver {
                                                    withCompletionHandler: { (error) in
                                                     
             })
-           
-                        
-            // MARK: - Delegates
-            func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-                completionHandler([.alert,.sound])
-            }
-            
-            
+                       
             let snoozeAction = UNNotificationAction(identifier: "snooze",
                                                         title:"Snooze",options: UNNotificationActionOptions())
             
@@ -159,11 +152,11 @@ public class GlucoseObserver {
                 
             notificationCenter.add(request, withCompletionHandler: nil)
            
-            print("joernl:: high timer1 up")
+   /*         print("joernl:: high timer1 up")
             
             NSLog("joernl:: high timer2 up")
             
-            func userNotificationCenter(_ center: UNUserNotificationCenter,
+           func userNotificationCenter(_ center: UNUserNotificationCenter,
                                         didReceive response: UNNotificationResponse,
                                         withCompletionHandler completionHandler:
                 @escaping () -> Void) {
@@ -189,7 +182,7 @@ public class GlucoseObserver {
                                 completionHandler()
                         }
                     
-            
+      */
                    
                
                 }
