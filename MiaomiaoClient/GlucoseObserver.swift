@@ -16,8 +16,8 @@ public class GlucoseObserver {
    
     public func observeGlucose() {
         
-        var timer: DispatchSourceTimer?
         let glucoseValue = defaults.float(forKey: "glucoseValue")
+        
 /*        if defaults.object(forKey: "snoozeTimer") == nil {
             defaults.set(0, forKey: "snoozeTimer")
         }
@@ -27,7 +27,7 @@ public class GlucoseObserver {
             let timerCheckB = defaults.integer(forKey: "snoozeTimer")
             if timerCheckA > timerCheckB {
          
-         */ if (timer?.isCancelled) == false {
+         */ if defaults.bool(forKey: "snoozeTimer") == true {
             return
             }
         
