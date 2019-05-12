@@ -17,7 +17,9 @@ public class GlucoseObserver {
     public func observeGlucose() {
         
         let glucoseValue = defaults.float(forKey: "glucoseValue")
-        
+        if  defaults.string(forKey: "isAppAlreadyLaunchedOnce") == "false" {
+            defaults.set(false, forKey: "snoozeTimer")
+        }
 /*        if defaults.object(forKey: "snoozeTimer") == nil {
             defaults.set(0, forKey: "snoozeTimer")
         }
