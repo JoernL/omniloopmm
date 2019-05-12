@@ -17,7 +17,7 @@ public class GlucoseObserver {
     public func observeGlucose() {
         
         let glucoseValue = defaults.float(forKey: "glucoseValue")
-        if  defaults.bool(forKey: "hasBeenLaunchedBeforeFlag") == false {
+        if  defaults.bool(forKey: "hasBeenLaunchedBeforeFlag") == true {
             defaults.set(false, forKey: "snoozeTimer")
         }
 /*        if defaults.object(forKey: "snoozeTimer") == nil {
