@@ -11,14 +11,17 @@ import AudioToolbox
 import UserNotifications
 import LoopKit
 
+var firstRun : Bool = true
+
 public class GlucoseObserver {
     
    
     public func observeGlucose() {
         
         let glucoseValue = defaults.float(forKey: "glucoseValue")
-        if  defaults.bool(forKey: "hasBeenLaunchedBeforeFlag") == true {
+        if  firstRun == true {
             defaults.set(false, forKey: "snoozeTimer")
+            firstRun = false
         }
 /*        if defaults.object(forKey: "snoozeTimer") == nil {
             defaults.set(0, forKey: "snoozeTimer")
