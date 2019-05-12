@@ -16,20 +16,22 @@ public class GlucoseObserver {
    
     public func observeGlucose() {
         
-        
+        var timer: DispatchSourceTimer?
         let glucoseValue = defaults.float(forKey: "glucoseValue")
-        if defaults.object(forKey: "snoozeTimer") == nil {
+/*        if defaults.object(forKey: "snoozeTimer") == nil {
             defaults.set(0, forKey: "snoozeTimer")
         }
         
         let timerCheckA = defaults.integer(forKey: "snoozeTimer")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             let timerCheckB = defaults.integer(forKey: "snoozeTimer")
             if timerCheckA > timerCheckB {
+         
+         */ if ((timer?.resume()) != nil) {
             return
             }
-        }
-        defaults.set(0, forKey: "snoozeTimer")
+        
+        //defaults.set(0, forKey: "snoozeTimer")
                 
         if (glucoseValue > 90 && glucoseValue < 200)  {
                 return
