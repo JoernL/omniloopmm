@@ -27,7 +27,7 @@ public class GlucoseObserver {
             let timerCheckB = defaults.integer(forKey: "snoozeTimer")
             if timerCheckA > timerCheckB {
          
-         */ if ((timer?.resume()) != nil) {
+         */ if (timer?.isCancelled) == false {
             return
             }
         
