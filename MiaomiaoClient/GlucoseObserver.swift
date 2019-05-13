@@ -43,7 +43,7 @@ public class GlucoseObserver {
             content.badge = 0
             content.categoryIdentifier = "alarm.category"
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: true)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                             content: content, trigger: trigger)
@@ -74,7 +74,7 @@ public class GlucoseObserver {
             content.badge = 0
             content.categoryIdentifier = "alarm.category"
            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: true)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
