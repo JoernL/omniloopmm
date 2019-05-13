@@ -34,15 +34,15 @@ public class GlucoseObserver {
         }
         
         else if glucoseValue < 90 {
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate) {
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            }
             
             let content = UNMutableNotificationContent()
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "LOW GLUCOSE"
             content.body = "Push for snooze option"
-            content.sound = UNNotificationSound.defaultCritical
-            content.badge = 0
             content.categoryIdentifier = "alarm.category"
-            
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
@@ -65,15 +65,14 @@ public class GlucoseObserver {
         }
         
         else if glucoseValue > 200 {
-           
+        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate) {
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            
             let content = UNMutableNotificationContent()
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "HIGH GLUCOSE"
             content.body = "Push for snooze option"
-            content.sound = UNNotificationSound.default()
-            content.badge = 0
             content.categoryIdentifier = "alarm.category"
-           
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
@@ -95,4 +94,5 @@ public class GlucoseObserver {
             
       }
    }
+  }
 }
