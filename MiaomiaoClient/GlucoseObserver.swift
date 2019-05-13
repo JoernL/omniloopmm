@@ -23,21 +23,11 @@ public class GlucoseObserver {
             defaults.set(false, forKey: "snoozeTimer")
             firstRun = false
         }
-/*        if defaults.object(forKey: "snoozeTimer") == nil {
-            defaults.set(0, forKey: "snoozeTimer")
-        }
-        
-        let timerCheckA = defaults.integer(forKey: "snoozeTimer")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            let timerCheckB = defaults.integer(forKey: "snoozeTimer")
-            if timerCheckA > timerCheckB {
-         
-         */ if defaults.bool(forKey: "snoozeTimer") == true {
+
+        if defaults.bool(forKey: "snoozeTimer") == true {
             return
             }
         
-        //defaults.set(0, forKey: "snoozeTimer")
-                
         if (glucoseValue > 90 && glucoseValue < 200)  {
                 return
             
@@ -53,7 +43,7 @@ public class GlucoseObserver {
             content.badge = 0
             content.categoryIdentifier = "alarm.category"
             
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: true)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                             content: content, trigger: trigger)
@@ -80,11 +70,11 @@ public class GlucoseObserver {
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "HIGH GLUCOSE"
             content.body = "Push for snooze option"
-            content.sound = UNNotificationSound.defaultCritical
+            content.sound = UNNotificationSound.default()
             content.badge = 0
             content.categoryIdentifier = "alarm.category"
            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: true)
             let requestIdentifier = "alarm"
             let request = UNNotificationRequest(identifier: requestIdentifier,
                                                 content: content, trigger: trigger)
