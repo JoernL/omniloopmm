@@ -37,7 +37,6 @@ public class GlucoseObserver {
         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate) {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             }
-            
             let content = UNMutableNotificationContent()
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "LOW GLUCOSE"
@@ -67,7 +66,7 @@ public class GlucoseObserver {
         else if glucoseValue > 200 {
         AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate) {
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            
+            }
             let content = UNMutableNotificationContent()
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "HIGH GLUCOSE"
@@ -94,5 +93,5 @@ public class GlucoseObserver {
             
       }
    }
-  }
 }
+
