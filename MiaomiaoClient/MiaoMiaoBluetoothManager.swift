@@ -390,8 +390,8 @@ final class MiaoMiaoBluetoothManager: NSObject, CBCentralManagerDelegate, CBPeri
             self.wantsToTerminate = true
         default:
             state = .Disconnected
-            //connect()
-                scanForMiaoMiao()
+            connect()
+            //    scanForMiaoMiao()
         }
         // Keep this code in case you want it some later time: it is used for reconnection only in background mode
         //        state = .Disconnected
