@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AudioToolbox.AudioServices
+import AudioToolbox
 import UserNotifications
 import LoopKit
 
@@ -34,7 +34,8 @@ public class GlucoseObserver {
         }
         
         else if glucoseValue < 90 {
-        AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        
+            AudioServicesPlayAlertSound(SystemSoundID   (kSystemSoundID_Vibrate))
             let content = UNMutableNotificationContent()
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "LOW GLUCOSE"
@@ -62,7 +63,8 @@ public class GlucoseObserver {
         }
         
         else if glucoseValue > 200 {
-        AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate, nil)
+        
+            AudioServicesPlayAlertSound(SystemSoundID   (kSystemSoundID_Vibrate))
             let content = UNMutableNotificationContent()
             let notificationCenter = UNUserNotificationCenter.current()
             content.title = "HIGH GLUCOSE"
