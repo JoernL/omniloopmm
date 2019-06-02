@@ -63,6 +63,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
         case authentication
         case latestReading
         case extraSlope
+        case extraOffset
         case sensorInfo
         case latestBridgeInfo
         case latestCalibrationData
@@ -70,7 +71,7 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
         
         case delete
 
-        static let count = 7
+        static let count = 8
     }
 
     override public func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,7 +87,13 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
     }
     
     private enum ExtraSlopeRow: Int {
-        case offset
+        case extraSlope
+        
+        static let count = 1
+    }
+    
+    private enum ExtraOffsetRow: Int {
+        case extraOffset
         
         static let count = 1
     }
@@ -132,6 +139,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
         case .latestReading:
             return LatestReadingRow.count
         case .extraSlope:
+            return 1
+        case .extraOffset:
             return 1
         case .sensorInfo:
             return LatestSensorInfoRow.count
@@ -232,7 +241,21 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
             cell.accessoryType = .disclosureIndicator
             
             return cell
-           
+            
+        case .extraOffset:
+            
+            if (defaults.object(forKey: "extraOffset") == nil)  {          defaults.set("0.0", forKey: "extraOffset")
+            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
+            
+            cell.textLabel?.text = LocalizedString("Extra Offset", comment: "Title of cell to set an Extra Offset")
+            let tokenLength = 0
+            cell.detailTextLabel?.text = defaults.object(forKey: "extraOffset") as? String ?? String()
+            
+            cell.accessoryType = .disclosureIndicator
+            
+            return cell
+            
         case .latestBridgeInfo:
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
             
@@ -359,6 +382,8 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
             return LocalizedString("Latest Reading", comment: "Section title for latest glucose reading")
         case .extraSlope:
             return nil
+        case .extraOffset:
+            return nil
         case .delete:
             return nil
         case .latestBridgeInfo:
@@ -429,9 +454,38 @@ public class MiaomiaoClientSettingsViewController: UITableViewController, UNUser
           }
           
           show(vc, sender: nil)
-          
+            
+        case .extraOffset:
             
             
+            guard let service = cgmManager?.miaomiaoService else {
+                NSLog("dabear:: no miaomiaoservice?")
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+                break
+            }
+            let vc = AuthenticationViewController(authentication: service)
+            vc.authenticationObserver = { [weak self] (service) in
+                self?.cgmManager?.miaomiaoService = service
+                
+                var testvar: String
+                
+                let offset = KeychainManager()
+                
+                do{
+                    
+                    NSLog("dabear:: miaomiaoservice alter: setAutoCalibrateWebAccessToken called")
+                    try testvar = offset.setExtraOffset (accessToken: service.accessToken, url: service.url)
+                    
+                } catch {
+                    NSLog("dabear:: miaomiaoservice alter:could not permanently save setAutoCalibrateWebAccessToken")
+                }
+                
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+                
+                defaults.set(testvar, forKey: "extraOffset")
+            }
+            
+            show(vc, sender: nil)
             
         case .latestReading:
             tableView.deselectRow(at: indexPath, animated: true)

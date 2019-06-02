@@ -36,11 +36,16 @@ extension LibreGlucose: GlucoseValue {
         if (defaults.object(forKey: "extraSlope") == nil) {
             defaults.set("1.0", forKey: "extraSlope")
         }
+        
+        if (defaults.object(forKey: "extraOffset") == nil) {
+            defaults.set("0.0", forKey: "extraOffset")
+        }
         let extraSlope = defaults.float(forKey: "extraSlope")
-        let glucoseValue = glucose * extraSlope
-        defaults.set(glucoseValue, forKey: "glucoseValue")
+        let extraOffset = defaults.float(forKey: "extraOffset")
+        //let glucoseValue = (glucose * extraSlope) + extraOffset
+        //defaults.set(glucoseValue, forKey: "glucoseValue")
         //observer.observeGlucose()
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose * extraSlope))
+        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: Double(glucose * extraSlope + extraOffset))
     }
 }
 
